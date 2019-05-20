@@ -1,8 +1,8 @@
 class Player {
   constructor(name, id) {
     this.name = name
-    this.score = 0
     this.id = id
+    this.score = 0
     this.bank = 0
   }
   getPlayerName() {
@@ -12,3 +12,5 @@ class Player {
     return this.score
   }
 }
+
+export default Player;
