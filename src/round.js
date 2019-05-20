@@ -1,5 +1,5 @@
 class Round {
-  constructor(wheel, currentPuzzle, players,)  {
+  constructor(wheel, currentPuzzle, players)  {
     this.wheel = wheel;
     this.puzzles = currentPuzzle;
     this.players = players
