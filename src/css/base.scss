@@ -1,6 +1,33 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+// $primary-background: pink;
 
+// body {
+//   background-color: $primary-background;
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Oxygen, sans-serif;
+  font-weight: 300;
+}
 body {
-  background-color: $primary-background;
+  display: flex;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  box-shadow: 0 0 10 10 black;
+  height: 20vh;
+  border: gray 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #51768C;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
