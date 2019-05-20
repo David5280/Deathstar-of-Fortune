@@ -8,3 +8,5 @@ class Puzzle {
     this.correctAnswer = correctAnswer
   }
 }
+
+export default Puzzle

@@ -28,5 +28,4 @@ describe('Player', function() {
   it('should return the players score', function() {
     expect(player.getPlayerScore()).to.equal(0)
   });
-
 });
