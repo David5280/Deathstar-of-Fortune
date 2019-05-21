@@ -1,9 +1,10 @@
 class Round {
-  constructor(wheel, currentPuzzle, players)  {
+  constructor(wheel, currentPuzzle, players, turn)  {
     this.wheel = wheel;
     this.puzzles = currentPuzzle;
-    this.players = players
-    this.turnCount = 0
+    this.players = players;
+    this.turn = turn;
+    this.turnCount = 0;
 
   }
   returnCurrentPlayer() {
@@ -36,3 +37,5 @@ class Round {
   }
 
 }
+
+export default Round;
