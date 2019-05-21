@@ -22,13 +22,13 @@ describe('Round', function() {
     testData1 = testData.puzzles.one_word_answers.puzzle_bank[0]
 
     wheel = new Wheel(testData.wheel);
-    wheel.selectCurrentValues();
+    // wheel.selectCurrentValues();
     Player1 = new Player('Jeffory', 1);
     Player2 = new Player('Timjax', 2);
     Player3 = new Player('Karl', 3);
     puzzle1 = new Puzzle(testData1.category, testData1.number_of_words, 
       testData1.total_number_of_letters,
-      testData1.first_word, testData1.description, testData1.correct_answer.split(''))
+      testData1.first_word, testData1.description, testData1.correct_answer.toUpperCase().split(''))
     turn = new Turn(puzzle1)
     round = new Round(wheel, puzzle1, [Player1, Player2, Player3], turn)
 
@@ -37,6 +37,7 @@ describe('Round', function() {
     expect(round).to.be.an.instanceOf(Round)
   });
   it('should hold a wheel with six values', function () {
+    wheel.selectCurrentValues();
     expect(round.wheel.currentValues.length).to.equal(6);
   });
   it('should have three players', function() {
@@ -78,4 +79,62 @@ describe('Round', function() {
     expect(round.returnCurrentPlayer().score).to.equal(0);
     expect(round.returnCurrentPlayer().bank).to.equal(200);
   });
+  it('should evaluate the total word guess', function () {
+    Player1.score = 200;
+    Player2.score = 300;
+    Player3.score = 600;
+    round.guessAnswer('guess');
+    expect(Player1.score).to.equal(200);
+    expect(Player2.score).to.equal(300);
+    expect(Player3.score).to.equal(600);
+    expect(Player1.bank).to.equal(0);
+    expect(Player2.bank).to.equal(0);
+    expect(Player3.bank).to.equal(0);
+    round.guessAnswer('Armchair');
+    expect(Player1.score).to.equal(0);
+    expect(Player2.score).to.equal(0);
+    expect(Player3.score).to.equal(0);
+    expect(Player1.bank).to.equal(0);
+    expect(Player2.bank).to.equal(300);
+    expect(Player3.bank).to.equal(0);
+  })
+  it('should evaluate the players letter guess', function () {
+    Player1.score = 400;
+    Player2.score = 250;
+    Player3.score = 50;
+    round.wheel.selectCurrentValues();
+    let result = round.guessLetter('A');
+    // console.log('b', result);
+    if (result === 'BANKRUPT') {
+      expect(Player1.score).to.equal(0);
+    } else if (result === 'LOSE A TURN') {
+      expect(Player1.score).to.equal(400);
+      expect(round.returnCurrentPlayer()).to.eql(Player2);
+    } else if (result === 0) {
+      expect(Player1.score).to.equal(400);
+      expect(round.returnCurrentPlayer()).to.eql(Player2);
+    } else {
+      console.log(result);
+      expect(Player1.score).to.equal(result);      
+    }
+  })
+  it('should reject the players incorrect letter guess', function () {
+    Player1.score = 400;
+    Player2.score = 250;
+    Player3.score = 50;
+    round.wheel.selectCurrentValues();
+    let result = round.guessLetter('Z');
+    // console.log('b', result);
+    if (result === 'BANKRUPT') {
+      expect(Player1.score).to.equal(0);
+    } else if (result === 'LOSE A TURN') {
+      expect(Player1.score).to.equal(400);
+      expect(round.returnCurrentPlayer()).to.eql(Player2);
+    } else if (result === 0) {
+      expect(Player1.score).to.equal(400);
+      expect(round.returnCurrentPlayer()).to.eql(Player2);
+    } else {
+      expect(Player1.score).to.equal(result);      
+    }
+  })
 });

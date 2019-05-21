@@ -16,8 +16,27 @@ class Round {
     return this.players[this.turnCount]
   }
 
-  guessAnswer() {
+  guessAnswer(guess) {
+    this.turn.guessAnswer(guess) ? this.roundOver() : this.incremenTurnCount()
+  }
 
+  guessLetter(playerGuess) {
+    let spinValue = this.wheel.spin()
+    let correctLetterCount = this.turn.guessLetter(playerGuess);
+    if (spinValue === 'BANKRUPT') {
+      this.returnCurrentPlayer().score = 0;
+      this.incremenTurnCount();
+      return 'BANKRUPT';
+    } else if (spinValue === 'LOSE A TURN') {
+      this.incremenTurnCount();
+      return 'LOSE A TURN'
+    } else if (correctLetterCount === 0) {
+      this.incremenTurnCount();
+      return 0;
+    } else {
+      this.returnCurrentPlayer().score += spinValue * correctLetterCount;
+      return this.returnCurrentPlayer().score;
+    }
   }
 
   takeTurn(currentPuzzle) {

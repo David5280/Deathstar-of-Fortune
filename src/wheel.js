@@ -8,7 +8,7 @@ class Wheel {
       let index = Math.floor(Math.random() * this.values.length)
       this.currentValues.push(this.values.splice(index, 1)[0])
     }
-    return this.currentValues 
+    return this.currentValues;
   }
   spin() {
     const index = Math.floor(Math.random() * this.currentValues.length)
