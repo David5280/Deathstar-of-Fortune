@@ -33,7 +33,31 @@ h1 {
   text-align: center;
 }
 
-.section-left {
+h2 {
+  color: rgb(30, 6, 240);
+  font-weight: bold;
+  font-size: 24px;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+h3 {
+  color: rgb(30, 6, 240);
+  font-weight: bold;
+  font-size: 20px;
+  margin: 50px 10px;
+  text-align: center;
+}
+
+h4 {
+  color: rgb(30, 6, 240);
+  font-weight: bold;
+  font-size: 20px;
+  margin: 50px 10px;
+  text-align: center;
+}
+
+.section-puzzle {
   width: 64%;
   display: flex;
   height: 550px;
@@ -47,14 +71,12 @@ h1 {
   left: 0;
 } 
 
-.section-right {
-    width: 36%;
-    min-width: 400px;
+.section-wheel {
+    width: 40%;
+    min-width: 300px;
     display: flex;
-    box-shadow: 0 0 10 10 black;
     height: 550px;
     border: gray 1px solid;
-    display: flex;
     flex-direction: column;
     align-items: right;
     background-color: rgb(52, 90, 52);
@@ -62,5 +84,46 @@ h1 {
     top: 150px;
     right: 0;  
   } 
+
+.player-one {
+  width: 35%;
+  display: flex;
+  height: 250px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(167, 124, 150);
+  position: fixed;
+  top: 700px;
+  left: 0; 
+} 
+
+.player-two {
+  width: 40%;
+  display: flex;
+  height: 250px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(159, 209, 230);
+  position: fixed;
+  top: 700px;
+  left: 500px;  
+}
+
+.player-three {
+  width: 35%;
+  display: flex;
+  height: 250px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(230, 159, 180);
+  position: fixed;
+  top: 700px;
+  left: 950px;  
+}
+
+.footer {
+  display: inline-block;
+  background-color: #51768C
+}
 
 
