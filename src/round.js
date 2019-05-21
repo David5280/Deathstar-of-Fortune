@@ -1,17 +1,23 @@
 class Round {
   constructor(wheel, currentPuzzle, players, turn)  {
     this.wheel = wheel;
-    this.puzzles = currentPuzzle;
+    this.puzzle = currentPuzzle;
     this.players = players;
     this.turn = turn;
     this.turnCount = 0;
 
   }
-  returnCurrentPlayer() {
-    // return this.players[this.turnCount]
-  }
+
   incremenTurnCount( ) {
-    //togglesBetweenPlayers
+    this.turnCount === 2 ? this.turnCount = 0 : this.turnCount++;
+  }
+
+  returnCurrentPlayer() {
+    return this.players[this.turnCount]
+  }
+
+  guessAnswer() {
+
   }
 
   takeTurn(currentPuzzle) {
@@ -32,10 +38,13 @@ class Round {
   roundOver() {
     // winning player add total to bank
     // reset all scores
-    // 
-    // 
+    let currentPlayer = this.returnCurrentPlayer();
+    currentPlayer.bank += currentPlayer.score;
+    this.players.forEach(player => {
+      player.score = 0;
+    })
+    // console.log(this.players)
   }
-
 }
 
 export default Round;
