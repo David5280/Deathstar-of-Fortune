@@ -9,18 +9,24 @@ class Game {
     this.selectedPuzzles = []
     this.roundCounter = 1
     this.players = players
+    this.wheel = {}
+    this.turn = {}
+    this.round =  {}
   }
-  start(wheelValues) {
-    wheel = new Wheel(wheelValues)
-    turn = new Turn(this.selectedPuzzles
+  createWheel(wheelValues) {
+    this.wheel = new Wheel(wheelValues)
+  }
+
+  start() {
+    this.turn = new Turn(this.selectedPuzzles
       [this.roundCounter - 1])
-    round = new Round(wheel.selectCurrentValues(), this.selectedPuzzles
-    [this.roundCounter - 1], this.players)
+    this.round = new Round(this.wheel.selectCurrentValues(), this.selectedPuzzles
+      [this.roundCounter - 1], this.players, this.turn)
   }
   roundOver() {
-    // let players = round.players
-    // let wheel = new Wheel()
-    // let round = new Round (wheel.selectCurrentValues(), this.selectedPuzzles[this.roundCounter], players)
+    this.round.roundOver();
+    this.roundCounter++;
+    this.start();
   }
   makeSelectedPuzzle(data) {
     this.selectedPuzzles = []

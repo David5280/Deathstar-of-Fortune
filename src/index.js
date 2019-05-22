@@ -23,15 +23,24 @@ let round;
 
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+function createPlayers() {
+  let player1 = new Player('Him', 1)
+  let player2 = new Player('Her', 2)
+  let player3 = new Player('Mantis', 3)
+  return [player1, player2, player3]
+}
 
+function createGame() {
+  let players = createPlayers()
+  let game = new Game(players)
+  return game
+}
 
-let player1 = new Player('Him', 1)
-let player2 = new Player('Her', 2)
-let player3 = new Player('Mantis', 3)
-let game = new Game([player1, player2, player3])
+let game = createGame()
 game.makeSelectedPuzzle(testData)
-console.log()
+game.createWheel(testData.wheel)
 game.start()
-// console.log(game.start())
-console.log(round)
+
+console.log(game)
+// game.roundOver()
+// console.log(game)

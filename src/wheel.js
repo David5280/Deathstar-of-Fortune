@@ -4,9 +4,10 @@ class Wheel {
     this.currentValues = []
   }
   selectCurrentValues() {
+    this.currentValues = []
     for (let i = 1; i <= 6; i++) {
       let index = Math.floor(Math.random() * this.values.length)
-      this.currentValues.push(this.values.splice(index, 1)[0])
+      this.currentValues.push(this.values[index])
     }
     return this.currentValues;
   }

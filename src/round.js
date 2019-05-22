@@ -40,14 +40,11 @@ class Round {
   }
 
   roundOver() {
-    // winning player add total to bank
-    // reset all scores
     let currentPlayer = this.returnCurrentPlayer();
     currentPlayer.bank += currentPlayer.score;
     this.players.forEach(player => {
       player.score = 0;
     })
-    // console.log(this.players)
   }
 
 
