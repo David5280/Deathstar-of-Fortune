@@ -5,10 +5,12 @@
 import $ from 'jquery';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
+import './css/styles.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/starwarsbackground.jpg'
+import './images/death-star.png'
 import Player from './player';
 import testData from '../data/test_data_set'
 import Puzzle from './puzzle';
@@ -44,3 +46,16 @@ game.start()
 console.log(game)
 // game.roundOver()
 // console.log(game)
+
+$(document).ready(function(){
+  
+//   <section class='pre-game-form'>
+//   <form class='player-names'>
+//     <input type='text' placeholder='Player 1' class='player-name-inputs'>
+//     <input type='text' placeholder='Player 2' class='player-name-inputs'>
+//     <input type='text' placeholder='Player 3' class='player-name-inputs'>
+//   </form>
+// </section>
+
+
+});

@@ -1,0 +1,95 @@
+HTML {
+  height: 100%;
+  width: 100%;
+}
+body {
+  color: #fff;
+  height: 100vh;
+  background-image: url('../images/starwarsbackground.jpg');
+  
+}
+
+header {
+  font-size: 30px;
+}
+
+.header { 
+  color: #ffd700;
+  text-shadow: 2px 2px 4px;
+  text-align: center;
+}
+
+main {
+  padding: 15px;
+}
+
+.middle {
+  width: 50%;
+
+}
+
+.death-star {
+  flex: 2;
+  display: flex;
+}
+
+#deathstar {
+  flex: 2;
+  align-self: center;
+  width: 100%
+}
+
+.main-score-cards {
+  flex: 1;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: space-between;
+  // justify-content: space-between;
+}
+
+.main-letters {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  margin-top: 100px;
+}
+
+.main-letters article {
+  transition: all .2s ease-in-out;
+  font-size: 20px;
+}
+
+.main-letters article:hover {
+  transform: scale(3.0);
+}
+
+.middle-container {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+}
+
+.category-hint {
+  flex: 6;
+  height: 150px;
+  width: 100%;
+  border: white solid 2px;
+  align-self: center;
+  margin: 25px;
+}
+
+.puzzle {
+  flex: 6;
+  height: 250px;
+  width: 100%;
+  border: white solid 2px;
+  align-self: center;
+  margin: 25px;
+}
+
+
+
+
+
