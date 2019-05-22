@@ -39,21 +39,6 @@ class Round {
     }
   }
 
-  takeTurn(currentPuzzle) {
-    // let turn = new Turn (currentPuzzle)
-    // let currentPlayer = this.returnCurrentPlayer()
-
-    //if guessAnswer
-    //if true currentPlayer wins / next round / else nothing
-   
-    // if turn.guessLetter()
-
-    // currentPlayer.score += turn.guessLetter()
-
-    // else turn.buyVowell
-    // currentPlayer -= turn.buyVowel()
- 
-  }
   roundOver() {
     // winning player add total to bank
     // reset all scores
@@ -64,6 +49,19 @@ class Round {
     })
     // console.log(this.players)
   }
+
+
+
+  buyVowel(vowel) {
+    this.returnCurrentPlayer().score -= 100;
+    if (this.turn.guessLetter(vowel) === 0) {
+      this.incremenTurnCount()
+      return 0
+    } else {
+      return this.turn.guessLetter(vowel)
+    }
+  }
+
 }
 
 export default Round;

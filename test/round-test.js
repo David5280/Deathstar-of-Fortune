@@ -137,4 +137,17 @@ describe('Round', function() {
       expect(Player1.score).to.equal(result);      
     }
   })
+  it('should buy a vowel', function () {
+    Player1.score = 400;
+    Player2.score = 250;
+    Player3.score = 50;
+    round.wheel.selectCurrentValues();
+    expect(round.buyVowel('E')).to.equal(0)
+    expect(Player1.score).to.equal(300)
+    expect(round.returnCurrentPlayer()).to.eql(Player2)
+    expect(round.buyVowel('A')).to.equal(2)
+    expect(Player2.score).to.equal(150)
+
+  })
+
 });
