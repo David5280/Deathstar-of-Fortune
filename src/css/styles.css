@@ -12,7 +12,7 @@ body {
 header {
   width: 100%;
   display: flex;
-  box-shadow: 0 0 10 10 black;
+  /* box-shadow: 0 0 10 10 black; */
   height: 150px;
   border: gray 1px solid;
   display: flex;
@@ -20,7 +20,7 @@ header {
   align-items: center;
   background-color: #51768C;
   /* color: white; */
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
@@ -45,7 +45,7 @@ h3 {
   color: rgb(30, 6, 240);
   font-weight: bold;
   font-size: 20px;
-  margin: 50px 10px;
+  margin: 5px 10px;
   text-align: center;
 }
 
@@ -53,7 +53,7 @@ h4 {
   color: rgb(30, 6, 240);
   font-weight: bold;
   font-size: 20px;
-  margin: 50px 10px;
+  margin: 5px 10px;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(81, 90, 140);
-  position: fixed;
+  position: absolute;
   top: 150px;
   left: 0;
 } 
@@ -80,7 +80,7 @@ h4 {
     flex-direction: column;
     align-items: right;
     background-color: rgb(52, 90, 52);
-    position: fixed;
+    position: absolute;
     top: 150px;
     right: 0;  
   } 
@@ -92,7 +92,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(167, 124, 150);
-  position: fixed;
+  position: absolute;
   top: 700px;
   left: 0; 
 } 
@@ -104,7 +104,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(159, 209, 230);
-  position: fixed;
+  position: absolute;
   top: 700px;
   left: 500px;  
 }
@@ -116,14 +116,27 @@ h4 {
   flex-direction: column;
   align-items: center;
   background-color: rgb(230, 159, 180);
-  position: fixed;
+  position: absolute;
   top: 700px;
   left: 950px;  
 }
 
-.footer {
-  display: inline-block;
-  background-color: #51768C
+footer {
+  display: flex;
+  height: 500px;
+  background-color: #51768C;
 }
 
+/* .footer-players {
+  display: flex;
+  height: 300px;
+} */
+.footer_player-one {
+  display: flex;
+}
+
+.player-image {
+  display: flex;
+  height: 130px;
+}
 
