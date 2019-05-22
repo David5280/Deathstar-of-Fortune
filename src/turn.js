@@ -20,7 +20,7 @@ class Turn {
     return correctLetters.length;
   }
   buyVowel() {
-    // wapgn
+    this.getCurrent
   }
 }
 

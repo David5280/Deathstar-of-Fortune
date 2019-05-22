@@ -98,7 +98,7 @@ const testData = {
         },
         {  
           category: 'Around The House',
-          number_of_words: 1,
+          number_of_words: 2,
           total_number_of_letters: 12,
           first_word: 7,
           description: 'Location or object(s) found within a typical house.',
@@ -135,7 +135,7 @@ const testData = {
         },
         {  
           category: 'Around The House',
-          number_of_words: 1,
+          number_of_words: 3,
           total_number_of_letters: 13,
           first_word: 5,
           description: 'Location or object(s) found within a typical house.',
@@ -172,7 +172,7 @@ const testData = {
         },
         {  
           category: 'Around The House',
-          number_of_words: 1,
+          number_of_words: 4,
           total_number_of_letters: 17,
           first_word: 4,
           description: 'Location or object(s) found within a typical house.',
