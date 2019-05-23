@@ -50,6 +50,7 @@ $(document).ready(function() {
 
   $('#deathstar').hide();
   $('.main-letters').hide();
+  $('.turn-controls').hide();
 
   $('.middle-section').append(`
     <section class='pre-game-form'>
@@ -66,6 +67,7 @@ $(document).ready(function() {
     $('.pre-game-form').fadeOut();
     $('.main-letters').show();
     $('#deathstar').show();
+    $('.turn-controls').fadeIn();
   });
 
   $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
@@ -74,8 +76,9 @@ $(document).ready(function() {
     let gameBoardPuzzle = game.round.returnCurrentAnswer()
     gameBoardPuzzle.map(letter => {
       if (letter !== " ") {
-        $('.puzzle-container').append(`<li class ="puzzle-letters ${letter}">${letter}</li>`)
-        $('.puzzle-letters').css('color', 'white')
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+        // $('.puzzle-letters').css('color', 'white')
+        $('.'+letter).hide()
       }
     }) 
   }
@@ -85,12 +88,18 @@ $(document).ready(function() {
     if(game.round.guessLetter(playerGuess) > 0 ) {
       console.log('working')
       console.log(game.round.guessLetter(playerGuess))
-      $('.'+playerGuess).css('color', "black")
+      // $('.'+playerGuess).css('color', "black")
+      $('.'+playerGuess).show()
     }
   })
 
+  
 
-
+  $('.guess-word').click(function() {
+    let wordValue = $('.guess-word-input').val()
+    game.round.guessAnswer(wordValue)
+    game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
+  })
 
 
 
@@ -110,5 +119,6 @@ $(document).ready(function() {
   // </section>
 
   displayPuzzle()
+  console.log(game.round.returnCurrentAnswer())
 
 });

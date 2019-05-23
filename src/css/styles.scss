@@ -155,9 +155,46 @@ h4 {
   background-color: white;
   color: black;
   margin: 5px;
-  box-sizing: border-box;
-  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // box-sizing: border-box;
+  // padding: 15px;
+  width: 40px;
+  height: 40px;
 }
+
+.turn-controls {
+  display: block;
+  margin: auto;
+  width: 500px;
+    input {
+      width: 100%;
+      border: none;
+      height: 30px;
+      margin: 10px 0;
+    }
+}
+
+.turn-buttons {
+  display: flex;
+  justify-content: space-between;
+ 
+    button {
+      height: 30px;
+      width: 150px;
+      font-style: inherit;
+    }
+}
+
+.current-player {
+  border: solid 2px #ffd700;
+}
+
+
+
+
+
 
 
 
