@@ -1,3 +1,5 @@
+import domUpdates from './domUpdates.js';
+
 class Round {
   constructor(wheel, currentPuzzle, players, turn)  {
     this.wheel = wheel;
@@ -8,8 +10,12 @@ class Round {
 
   }
 
-  incremenTurnCount( ) {
+  incremenTurnCount() {
     this.turnCount === 2 ? this.turnCount = 0 : this.turnCount++;
+    domUpdates.removeSpinValue()
+    let id = this.players[this.turnCount].id
+    domUpdates.addPlayerBorder(id)
+    domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
   }
 
   returnCurrentPlayer() {
@@ -34,9 +40,11 @@ class Round {
     if (spinValue === 'BANKRUPT') {
       this.returnCurrentPlayer().score = 0;
       this.incremenTurnCount();
+      console.log("bankrupt")
       return 'BANKRUPT';
     } else if (spinValue === 'LOSE A TURN') {
       this.incremenTurnCount();
+      console.log("lose turn")
       return 'LOSE A TURN'
     } else if (correctLetterCount === 0) {
       this.incremenTurnCount();
