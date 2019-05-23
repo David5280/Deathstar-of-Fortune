@@ -125,6 +125,12 @@ h4 {
     right: 0;  
   } 
 
+  .death-star-wheel {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+  }
+
 .player-one {
   width: 35%;
   display: flex;
