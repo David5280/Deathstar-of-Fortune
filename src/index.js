@@ -39,7 +39,9 @@ function createGame(Player1, Player2, Player3) {
 let game = createGame()
 game.makeSelectedPuzzle(testData)
 game.createWheel(testData.wheel)
-game.start()
+game.start(testData.wheel)
+
+
 
 const currentCategory = game.selectedPuzzles[game.roundCounter].category;
 const currentDescription = game.selectedPuzzles[game.roundCounter].description;
@@ -68,7 +70,24 @@ $(document).ready(function() {
 
   $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
 
-
+  function displayPuzzle() {
+    let gameBoardPuzzle = game.round.returnCurrentAnswer()
+    gameBoardPuzzle.map(letter => {
+      if (letter !== " ") {
+        $('.puzzle-container').append(`<li class ="puzzle-letters ${letter}">${letter}</li>`)
+        $('.puzzle-letters').css('color', 'white')
+      }
+    }) 
+  }
+  
+  $('.main-letters').click(function(event) { 
+    let playerGuess = $(event.target).text()
+    if(game.round.guessLetter(playerGuess) > 0 ) {
+      console.log('working')
+      console.log(game.round.guessLetter(playerGuess))
+      $('.'+playerGuess).css('color', "black")
+    }
+  })
 
 
 
@@ -90,5 +109,6 @@ $(document).ready(function() {
   //   </form>
   // </section>
 
+  displayPuzzle()
 
 });

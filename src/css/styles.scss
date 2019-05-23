@@ -81,6 +81,7 @@ main {
 
 .main-letters article:hover {
   transform: scale(3.0);
+  text-shadow: 5px, 5px, 30px;
 }
 
 .middle-container {
@@ -142,6 +143,21 @@ h4 {
   padding: 5px;
 }
 
+.puzzle-container {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+}
+
+.puzzle-letters {
+  list-style: none;
+  background-color: white;
+  color: black;
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 15px;
+}
 
 
 
