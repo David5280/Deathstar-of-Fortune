@@ -1,3 +1,5 @@
+import domUpdates from './domUpdates.js';
+
 class Round {
   constructor(wheel, currentPuzzle, players, turn)  {
     this.wheel = wheel;
@@ -8,8 +10,11 @@ class Round {
 
   }
 
-  incremenTurnCount( ) {
+  incremenTurnCount() {
     this.turnCount === 2 ? this.turnCount = 0 : this.turnCount++;
+    domUpdates.removeSpinValue()
+    let id = this.players[this.turnCount].id
+    domUpdates.addPlayerBorder(id)
   }
 
   returnCurrentPlayer() {
