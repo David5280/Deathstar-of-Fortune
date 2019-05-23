@@ -71,6 +71,46 @@ h4 {
   left: 0;
 } 
 
+.puzzle-display {
+  /* color: rgb(100, 223, 121);
+  font-size: 3em; */
+  border: rgb(46, 45, 45) 2px solid;
+  margin: auto;
+  padding: .2em;
+  align-items: center;
+}
+
+.puzzle-letter {
+  color: rgb(100, 223, 121);
+  font-size: 3em;
+  border: rgb(46, 45, 45) 2px solid;
+  margin: auto;
+  padding: .2em;
+  align-items: center;
+}
+
+.alphabet {
+  align-items: bottom;
+}
+
+.alpha-remaining {
+  color: rgb(167, 124, 150);
+  font-size: 1.4em;
+  border: gray 2px solid;
+  margin: auto;
+  padding: .2em;
+  align-items: center;
+}
+
+.alpha-a, 
+.alpha-r, 
+.alpha-m, 
+.alpha-c,
+.alpha-h,
+.alpha-i {
+  visibility: hidden;
+}
+
 .section-wheel {
     width: 40%;
     min-width: 300px;
@@ -98,7 +138,7 @@ h4 {
 } 
 
 .player-two {
-  width: 40%;
+  width: 35%;
   display: flex;
   height: 250px;
   flex-direction: column;
@@ -118,11 +158,13 @@ h4 {
   background-color: rgb(230, 159, 180);
   position: absolute;
   top: 700px;
-  left: 950px;  
+  left: 980px;  
 }
 
 footer {
   display: flex;
+  align-content: space-between;
+  align-items: center;
   height: 500px;
   background-color: #51768C;
 }
@@ -136,7 +178,7 @@ footer {
 }
 
 .player-image {
-  display: flex;
+
   height: 130px;
 }
 
