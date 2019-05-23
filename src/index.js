@@ -23,17 +23,15 @@ let wheel;
 let turn;
 let round;
 
-
-
-function createPlayers() {
-  let player1 = new Player('Him', 1)
-  let player2 = new Player('Her', 2)
-  let player3 = new Player('Mantis', 3)
+function createPlayers(Player1, Player2, Player3) {
+  let player1 = new Player(Player1, 1)
+  let player2 = new Player(Player2, 2)
+  let player3 = new Player(Player3, 3)
   return [player1, player2, player3]
 }
 
-function createGame() {
-  let players = createPlayers()
+function createGame(Player1, Player2, Player3) {
+  let players = createPlayers(Player1, Player2, Player3)
   let game = new Game(players)
   return game
 }
@@ -43,19 +41,54 @@ game.makeSelectedPuzzle(testData)
 game.createWheel(testData.wheel)
 game.start()
 
-console.log(game)
-// game.roundOver()
-// console.log(game)
+const currentCategory = game.selectedPuzzles[game.roundCounter].category;
+const currentDescription = game.selectedPuzzles[game.roundCounter].description;
 
-$(document).ready(function(){
+$(document).ready(function() {
+
+  $('#deathstar').hide();
+  $('.main-letters').hide();
+
+  $('.middle-section').append(`
+    <section class='pre-game-form'>
+    <form class='player-names'>
+      <input type='text' placeholder='Player 1' class='player-name-inputs'>
+      <input type='text' placeholder='Player 2' class='player-name-inputs'>
+      <input type='text' placeholder='Player 3' class='player-name-inputs'>
+      <button id='start-game-btn' class='player-name-inputs'>Start Game!</button>
+    </form>
+  </section>`)
+
+  $('#start-game-btn').click(function(event) {
+    event.preventDefault();
+    $('.pre-game-form').fadeOut();
+    $('.main-letters').show();
+    $('#deathstar').show();
+  });
+
+  $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // $('.category-hint').append();
   
-//   <section class='pre-game-form'>
-//   <form class='player-names'>
-//     <input type='text' placeholder='Player 1' class='player-name-inputs'>
-//     <input type='text' placeholder='Player 2' class='player-name-inputs'>
-//     <input type='text' placeholder='Player 3' class='player-name-inputs'>
-//   </form>
-// </section>
+  //   <section class='pre-game-form'>
+  //   <form class='player-names'>
+  //     <input type='text' placeholder='Player 1' class='player-name-inputs'>
+  //     <input type='text' placeholder='Player 2' class='player-name-inputs'>
+  //     <input type='text' placeholder='Player 3' class='player-name-inputs'>
+  //   </form>
+  // </section>
 
 
 });

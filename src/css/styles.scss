@@ -1,10 +1,10 @@
 HTML {
-  height: 100%;
+  // height: 100%;
   width: 100%;
 }
 body {
   color: #fff;
-  height: 100vh;
+  height: 1vh;
   background-image: url('../images/starwarsbackground.jpg');
   
 }
@@ -19,8 +19,12 @@ header {
   text-align: center;
 }
 
+h1 {
+  margin: 0px;
+}
+
 main {
-  padding: 15px;
+  padding: 5px;
 }
 
 .middle {
@@ -29,14 +33,29 @@ main {
 }
 
 .death-star {
-  flex: 2;
+  flex: 2.5;
   display: flex;
 }
 
 #deathstar {
   flex: 2;
   align-self: center;
-  width: 100%
+  width: 100%;
+  animation: pulsate-fwd 4s ease-in-out infinite both;
+  border-radius: 50%;
+  box-shadow: 0px 0px 75px #ffffff77;
+}
+
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .main-score-cards {
@@ -46,7 +65,6 @@ main {
 .middle-section {
   display: flex;
   justify-content: space-between;
-  // justify-content: space-between;
 }
 
 .main-letters {
@@ -72,21 +90,56 @@ main {
 }
 
 .category-hint {
-  flex: 6;
-  height: 150px;
-  width: 100%;
-  border: white solid 2px;
-  align-self: center;
-  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 3;
+  height: 100px;
+  width: 80%;
+  color: #f0f0f0;
+}
+
+.player-scorecard {
+  margin: 5px;
+}
+
+h4 {
+  font-size: 24px;
+  margin: 5px;
 }
 
 .puzzle {
-  flex: 6;
-  height: 250px;
-  width: 100%;
-  border: white solid 2px;
+  flex: 5;
+  height: 300px;
+  width: 80%;
   align-self: center;
-  margin: 25px;
+  // margin: 25px;
+}
+
+.pre-game-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  background-image: url('../images/starwarsbackground.jpg');
+  position: absolute;
+}
+
+.player-names {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.player-name-inputs {
+  height: 40px;
+  margin: 20px 0px;
+  background-color: #f0f0f0;
+  border: none;
+  color: black;
+  font-size: 20px;
+  padding: 5px;
 }
 
 
