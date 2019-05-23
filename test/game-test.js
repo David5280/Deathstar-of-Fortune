@@ -40,6 +40,7 @@ describe('Game', function() {
   });
 
   it('it should start a game', function() {
+
     game.start(testData.wheel)
   });
   

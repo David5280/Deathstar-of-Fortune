@@ -1,0 +1,164 @@
+HTML {
+  // height: 100%;
+  width: 100%;
+}
+body {
+  color: #fff;
+  height: 1vh;
+  background-image: url('../images/starwarsbackground.jpg');
+  
+}
+
+header {
+  font-size: 30px;
+}
+
+.header { 
+  color: #ffd700;
+  text-shadow: 2px 2px 4px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0px;
+}
+
+main {
+  padding: 5px;
+}
+
+.middle {
+  width: 50%;
+
+}
+
+.death-star {
+  flex: 2.5;
+  display: flex;
+}
+
+#deathstar {
+  flex: 2;
+  align-self: center;
+  width: 100%;
+  animation: pulsate-fwd 4s ease-in-out infinite both;
+  border-radius: 50%;
+  box-shadow: 0px 0px 75px #ffffff77;
+}
+
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.main-score-cards {
+  flex: 1;
+}
+
+.middle-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-letters {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  margin-top: 100px;
+}
+
+.main-letters article {
+  transition: all .2s ease-in-out;
+  font-size: 20px;
+}
+
+.main-letters article:hover {
+  transform: scale(3.0);
+  text-shadow: 5px, 5px, 30px;
+}
+
+.middle-container {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+}
+
+.category-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 3;
+  height: 100px;
+  width: 80%;
+  color: #f0f0f0;
+}
+
+.player-scorecard {
+  margin: 5px;
+}
+
+h4 {
+  font-size: 24px;
+  margin: 5px;
+}
+
+.puzzle {
+  flex: 5;
+  height: 300px;
+  width: 80%;
+  align-self: center;
+  // margin: 25px;
+}
+
+.pre-game-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  background-image: url('../images/starwarsbackground.jpg');
+  position: absolute;
+}
+
+.player-names {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.player-name-inputs {
+  height: 40px;
+  margin: 20px 0px;
+  background-color: #f0f0f0;
+  border: none;
+  color: black;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.puzzle-container {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+}
+
+.puzzle-letters {
+  list-style: none;
+  background-color: white;
+  color: black;
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+
+
+
