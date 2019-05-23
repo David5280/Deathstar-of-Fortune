@@ -51,6 +51,7 @@ $(document).ready(function() {
   $('#deathstar').hide();
   $('.main-letters').hide();
   $('.turn-controls').hide();
+  $('.1').css('border', "white solid 2px")
 
   $('.middle-section').append(`
     <section class='pre-game-form'>
@@ -86,16 +87,13 @@ $(document).ready(function() {
   $('.spin').click(function() {
     game.round.wheel.spin()
     let spinValue =  game.round.wheel.spinValue
-    $('.death-star').append(`<h3 class='spin-value'>${spinValue}</h1>`)
-    console.log(spinValue)
+    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h1>`)
   })
   
   $('.main-letters').click(function(event) { 
     let playerGuess = $(event.target).text()
     if(game.round.guessLetter(playerGuess) > 0 ) {
-      console.log(game.round.guessLetter(playerGuess))
       $('.'+playerGuess).show()
-      console.log($(event.target))
     }
   })
 
