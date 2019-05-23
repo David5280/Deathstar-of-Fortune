@@ -1,15 +1,15 @@
 class Player {
   constructor(name, id) {
-    this.name = name
-    this.id = id
-    this.score = 0
-    this.bank = 0
+    this.name = name;
+    this.id = id;
+    this.score = 0;
+    this.bank = 0;
   }
   getPlayerName() {
-    return this.name
+    return this.name;
   }
   getPlayerScore() {
-    return this.score
+    return this.score;
   }
 }
 
