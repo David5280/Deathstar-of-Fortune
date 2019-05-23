@@ -19,10 +19,6 @@ import Turn from './turn';
 import Wheel from './wheel';
 import Round from './round';
 import Game from './game';
-let wheel;
-let turn;
-let round;
-
 
 
 function createPlayers() {
@@ -41,21 +37,32 @@ function createGame() {
 let game = createGame()
 game.makeSelectedPuzzle(testData)
 game.createWheel(testData.wheel)
-game.start()
+game.start(testData.wheel)
 
-console.log(game)
-// game.roundOver()
-// console.log(game)
 
-$(document).ready(function(){
+
+
+$(document).ready(function() {
+  function displayPuzzle() {
+    let gameBoardPuzzle = game.round.returnCurrentAnswer()
+    gameBoardPuzzle.map(letter => {
+      if (letter !== " ") {
+        $('.puzzle-container').append(`<li class ="puzzle-letters ${letter}">${letter}</li>`)
+        $('.puzzle-letters').css('color', 'white')
+      }
+    }) 
+  }
   
-//   <section class='pre-game-form'>
-//   <form class='player-names'>
-//     <input type='text' placeholder='Player 1' class='player-name-inputs'>
-//     <input type='text' placeholder='Player 2' class='player-name-inputs'>
-//     <input type='text' placeholder='Player 3' class='player-name-inputs'>
-//   </form>
-// </section>
+  $('.main-letters').click(function(event) { 
+    let playerGuess = $(event.target).text()
+    if(game.round.guessLetter(playerGuess) > 0 ) {
+      console.log('working')
+      console.log(game.round.guessLetter(playerGuess))
+      $('.'+playerGuess).css('color', "black")
+    }
+  })
+ 
 
+  displayPuzzle()
 
 });

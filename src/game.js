@@ -17,10 +17,11 @@ class Game {
     this.wheel = new Wheel(wheelValues)
   }
 
-  start() {
+  start(wheelValues) {
+    this.wheel.selectCurrentValues(),
     this.turn = new Turn(this.selectedPuzzles
       [this.roundCounter - 1])
-    this.round = new Round(this.wheel.selectCurrentValues(), this.selectedPuzzles
+    this.round = new Round(this.wheel, this.selectedPuzzles
       [this.roundCounter - 1], this.players, this.turn)
   }
   roundOver() {
@@ -33,7 +34,8 @@ class Game {
     let keys = Object.keys(data.puzzles)
     keys.map((key) => {
       let newPuzzles = data.puzzles[key].puzzle_bank.map((puzz) =>{
-        let puzzle = new Puzzle(puzz.category, puzz.number_of_words, puzz.total_number_of_letters, puzz.first_word, puzz.description, puzz.correct_answer)
+        let puzzle = new Puzzle(puzz.category, puzz.number_of_words, puzz.total_number_of_letters, 
+          puzz.first_word, puzz.description, puzz.correct_answer.toUpperCase().split(''))
         return puzzle
       })
       let puzzbank = new PuzzleBank(newPuzzles)

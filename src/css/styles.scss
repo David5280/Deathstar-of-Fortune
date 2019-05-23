@@ -87,8 +87,24 @@ main {
   border: white solid 2px;
   align-self: center;
   margin: 25px;
+  display: flex;
 }
 
+.puzzle-container {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+}
+
+.puzzle-letters {
+  list-style: none;
+  background-color: white;
+  color: black;
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 15px;
+}
 
 
 

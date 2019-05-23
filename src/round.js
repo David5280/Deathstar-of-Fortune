@@ -16,6 +16,10 @@ class Round {
     return this.players[this.turnCount]
   }
 
+  returnCurrentAnswer() {
+    return this.puzzle.correctAnswer
+  }
+
   guessAnswer(guess) {
     this.turn.guessAnswer(guess) ? this.roundOver() : this.incremenTurnCount()
   }
