@@ -35,6 +35,12 @@ main {
 .death-star {
   flex: 2.5;
   display: flex;
+  .spin-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 #deathstar {
@@ -190,6 +196,8 @@ h4 {
 .current-player {
   border: solid 2px #ffd700;
 }
+
+
 
 
 

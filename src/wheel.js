@@ -2,6 +2,7 @@ class Wheel {
   constructor(values) {
     this.values = values
     this.currentValues = []
+    this.spinValue = ''
   }
   selectCurrentValues() {
     this.currentValues = []
@@ -13,8 +14,12 @@ class Wheel {
   }
   spin() {
     const index = Math.floor(Math.random() * this.currentValues.length)
+    this.spinValue = this.currentValues[index]
     return this.currentValues[index]
   }
+
+
+
 }
 
 export default Wheel

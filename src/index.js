@@ -82,14 +82,20 @@ $(document).ready(function() {
       }
     }) 
   }
+
+  $('.spin').click(function() {
+    game.round.wheel.spin()
+    let spinValue =  game.round.wheel.spinValue
+    $('.death-star').append(`<h3 class='spin-value'>${spinValue}</h1>`)
+    console.log(spinValue)
+  })
   
   $('.main-letters').click(function(event) { 
     let playerGuess = $(event.target).text()
     if(game.round.guessLetter(playerGuess) > 0 ) {
-      console.log('working')
       console.log(game.round.guessLetter(playerGuess))
-      // $('.'+playerGuess).css('color', "black")
       $('.'+playerGuess).show()
+      console.log($(event.target))
     }
   })
 

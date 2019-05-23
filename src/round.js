@@ -24,8 +24,12 @@ class Round {
     this.turn.guessAnswer(guess) ? this.roundOver() : this.incremenTurnCount()
   }
 
+  spinWheel() {
+    this.wheel.spinWheel()
+  }
+
   guessLetter(playerGuess) {
-    let spinValue = this.wheel.spin()
+    let spinValue = this.wheel.spinValue
     let correctLetterCount = this.turn.guessLetter(playerGuess);
     if (spinValue === 'BANKRUPT') {
       this.returnCurrentPlayer().score = 0;

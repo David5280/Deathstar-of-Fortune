@@ -18,7 +18,7 @@ class Game {
   }
 
   start(wheelValues) {
-    this.wheel.selectCurrentValues(),
+    this.wheel.selectCurrentValues()
     this.turn = new Turn(this.selectedPuzzles
       [this.roundCounter - 1])
     this.round = new Round(this.wheel, this.selectedPuzzles
