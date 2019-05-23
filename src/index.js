@@ -53,6 +53,9 @@ $(document).ready(function() {
   $('.turn-controls').hide();
   $('.1').css('border', "white solid 2px")
 
+  $('.con').attr('disabled', true),
+  $('.vow').attr('disabled', true)
+
   $('.middle-section').append(`
     <section class='pre-game-form'>
     <form class='player-names'>
@@ -88,19 +91,27 @@ $(document).ready(function() {
   }
 
   $('.spin').click(function() {
-    game.round.wheel.spin()
-    let spinValue =  game.round.wheel.spinValue
-    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h1>`)
-  })
+    game.round.spinWheel()
+    $('.con').attr('disabled', false);
+    let spinValue =  game.round.wheel.spinValue;
+    console.log(game.round.wheel.currentValues);
+    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h1>`);
+    if (spinValue === 'BANKRUPT' || spinValue === 'LOSE A TURN') {
+      $(".spin-value").show().delay(2000).fadeOut();
+      $('.con').attr('disabled', true);
+    }
+  });
   
+
   $('.main-letters').click(function(event) { 
     let playerGuess = $(event.target).text()
-    if(game.round.guessLetter(playerGuess) > 0 ) {
-      $('.'+playerGuess).show()
+    if (game.round.guessLetter(playerGuess) > 0 ) {
+      $('.' + playerGuess).show()
+      $(".spin-value").remove()
     }
+    $('.con').attr('disabled', true);
+    $(event.target).removeClass('con');
   })
-
-  
 
   $('.guess-word').click(function() {
     let wordValue = $('.guess-word-input').val()

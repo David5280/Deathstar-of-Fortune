@@ -66,13 +66,20 @@ main {
   justify-content: space-around;
   margin-top: 50px;
   padding: 40px;
-  & article {
+  & button {
+    background-color: black;
+    color: #fff;
     font-size: 20px;
+    border: none;
     transition: all .2s ease-in-out;
   }
-  & article:hover {
+  & button:hover {
     text-shadow: 5px, 5px, 30px;
     transform: scale(3.0);
+  }
+  & button:disabled {
+    color: #636363;
+    transform: none;
   }
 }
 
@@ -164,6 +171,11 @@ main {
       height: 30px;
       margin: 10px 0;
     }
+    & button:disabled {
+      background-color: 636363;
+      color: black;
+    }
+
 }
 
 .turn-buttons {
@@ -179,6 +191,11 @@ main {
 
 .current-player {
   border: solid 2px #ffd700;
+}
+
+.spin {  
+  transition: 5s;
+  transform: rotate(360deg);
 }
 
 

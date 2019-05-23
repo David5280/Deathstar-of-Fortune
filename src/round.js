@@ -31,12 +31,8 @@ class Round {
   }
 
   spinWheel() {
-    this.wheel.spinWheel()
-  }
-
-  guessLetter(playerGuess) {
+    this.wheel.spin()
     let spinValue = this.wheel.spinValue
-    let correctLetterCount = this.turn.guessLetter(playerGuess);
     if (spinValue === 'BANKRUPT') {
       this.returnCurrentPlayer().score = 0;
       this.incremenTurnCount();
@@ -46,11 +42,20 @@ class Round {
       this.incremenTurnCount();
       console.log("lose turn")
       return 'LOSE A TURN'
-    } else if (correctLetterCount === 0) {
+    }
+  }
+
+  guessLetter(playerGuess) {
+    // console.log(this.turnCount);
+    // console.log(this.wheel.currentValues);
+    let spinValue = this.wheel.spinValue
+    let correctLetterCount = this.turn.guessLetter(playerGuess);
+    if (correctLetterCount === 0) {
       this.incremenTurnCount();
       return 0;
     } else {
       this.returnCurrentPlayer().score += spinValue * correctLetterCount;
+      domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
       return this.returnCurrentPlayer().score;
     }
   }
