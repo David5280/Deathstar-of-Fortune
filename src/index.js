@@ -55,15 +55,19 @@ $(document).ready(function() {
   $('.middle-section').append(`
     <section class='pre-game-form'>
     <form class='player-names'>
-      <input type='text' placeholder='Player 1' class='player-name-inputs'>
-      <input type='text' placeholder='Player 2' class='player-name-inputs'>
-      <input type='text' placeholder='Player 3' class='player-name-inputs'>
+      <input type='text' placeholder='Player 1' class='player-name-inputs p1'>
+      <input type='text' placeholder='Player 2' class='player-name-inputs p2'>
+      <input type='text' placeholder='Player 3' class='player-name-inputs p3'>
       <button id='start-game-btn' class='player-name-inputs'>Start Game!</button>
     </form>
   </section>`)
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
+    $('#js-player1-name').text($('.p1').val());
+    $('#js-player2-name').text($('.p2').val());
+    $('#js-player3-name').text($('.p3').val());
+
     $('.pre-game-form').fadeOut();
     $('.main-letters').show();
     $('#deathstar').show();
@@ -78,7 +82,7 @@ $(document).ready(function() {
       if (letter !== " ") {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
         // $('.puzzle-letters').css('color', 'white')
-        $('.'+letter).hide()
+        $('.' + letter).hide()
       }
     }) 
   }
@@ -92,9 +96,9 @@ $(document).ready(function() {
   
   $('.main-letters').click(function(event) { 
     let playerGuess = $(event.target).text()
-    if(game.round.guessLetter(playerGuess) > 0 ) {
+    if (game.round.guessLetter(playerGuess) > 0 ) {
       console.log(game.round.guessLetter(playerGuess))
-      $('.'+playerGuess).show()
+      $('.' + playerGuess).show()
       console.log($(event.target))
     }
   })
@@ -106,23 +110,6 @@ $(document).ready(function() {
     game.round.guessAnswer(wordValue)
     game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
   })
-
-
-
-
-
-
-
-
-  // $('.category-hint').append();
-  
-  //   <section class='pre-game-form'>
-  //   <form class='player-names'>
-  //     <input type='text' placeholder='Player 1' class='player-name-inputs'>
-  //     <input type='text' placeholder='Player 2' class='player-name-inputs'>
-  //     <input type='text' placeholder='Player 3' class='player-name-inputs'>
-  //   </form>
-  // </section>
 
   displayPuzzle()
   console.log(game.round.returnCurrentAnswer())
