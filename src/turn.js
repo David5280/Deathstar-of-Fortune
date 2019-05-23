@@ -9,11 +9,6 @@ class Turn {
     return JSON.stringify(playerGuess.toUpperCase().split('')) === JSON.stringify(this.currentPuzzle.correctAnswer);
   }
   guessLetter(playerGuess) {
-    // let prizeValue = wheel.spin()
-    // if answer is incorrect
-    //    lose turn / return nothing
-    // if answer is correct 
-    //    returns prizeValue
     let correctLetters = this.currentPuzzle.correctAnswer.filter(letter => {
       return letter.includes(playerGuess);
     });
