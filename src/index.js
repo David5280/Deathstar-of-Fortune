@@ -67,7 +67,6 @@ $(document).ready(function() {
     $('#js-player1-name').text($('.p1').val());
     $('#js-player2-name').text($('.p2').val());
     $('#js-player3-name').text($('.p3').val());
-
     $('.pre-game-form').fadeOut();
     $('.main-letters').show();
     $('#deathstar').show();
