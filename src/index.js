@@ -68,9 +68,9 @@ $(document).ready(function() {
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
-    $('#js-player1-name').text($('.p1').val());
-    $('#js-player2-name').text($('.p2').val());
-    $('#js-player3-name').text($('.p3').val());
+    $('#js-player1-name').text($('.p1').val() || 'Player 1');
+    $('#js-player2-name').text($('.p2').val() || 'Player 2');
+    $('#js-player3-name').text($('.p3').val() || 'Player 3');
     $('.pre-game-form').fadeOut();
     $('.main-letters').show();
     $('#deathstar').show();
