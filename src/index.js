@@ -57,25 +57,36 @@ $(document).ready(function() {
   $('.vow').attr('disabled', true)
 
   $('.middle-section').append(`
-    <section class='pre-game-form'>
+  <section class='pre-game-form'>
     <form class='player-names'>
       <input type='text' placeholder='Player 1' class='player-name-inputs p1'>
       <input type='text' placeholder='Player 2' class='player-name-inputs p2'>
       <input type='text' placeholder='Player 3' class='player-name-inputs p3'>
-      <button id='start-game-btn' class='player-name-inputs'>Start Game!</button>
+      <button id='start-game-btn' class='player-name-inputs'>Continue</button>
     </form>
   </section>`)
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
+    $('.pre-game-form').fadeOut();
+    $('.pregame-prompt-container').append(`
+      <section class='pre-game-form prompt'>
+        <h3 class='pregame-prompt'>Welcome!  Use the buttons below to take your turn, and keep track of points in the boxes to the left!</h3>
+        </section>
+    `).delay(3000).fadeOut();
     $('#js-player1-name').text($('.p1').val() || 'Player 1');
     $('#js-player2-name').text($('.p2').val() || 'Player 2');
     $('#js-player3-name').text($('.p3').val() || 'Player 3');
-    $('.pre-game-form').fadeOut();
-    $('.main-letters').show();
-    $('#deathstar').show();
-    $('.turn-controls').fadeIn();
+    $('.main-letters').delay(3000).fadeIn();
+    $('#deathstar').delay(3000).fadeIn();;
+    $('.turn-controls').delay(3000).fadeIn();;
   });
+
+
+
+
+
+
 
   $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
 
@@ -95,7 +106,7 @@ $(document).ready(function() {
     $('.con').attr('disabled', false);
     let spinValue =  game.round.wheel.spinValue;
     console.log(game.round.wheel.currentValues);
-    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h1>`);
+    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h3>`);
     if (spinValue === 'BANKRUPT' || spinValue === 'LOSE A TURN') {
       $(".spin-value").show().delay(2000).fadeOut();
       $('.con').attr('disabled', true);

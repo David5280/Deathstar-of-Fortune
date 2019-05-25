@@ -137,9 +137,9 @@ main {
 }
 
 .pre-game-form {
-  align-items: center;
   background-image: url('../images/starwarsbackground.jpg');
   display: flex;
+  align-items: center;
   height: 75%;
   justify-content: center;
   position: absolute;
@@ -209,7 +209,21 @@ main {
   transform: rotate(360deg);
 }
 
+.pregame-prompt-container {
+  align-items: center;
+  background-image: url('../images/starwarsbackground.jpg');
+  display: flex;
+  height: 85%;
+  justify-content: center;
+  position: absolute;
+  width: 80%;
+  font-size: 28px;
+}
 
+h3 {
+  margin-left: 20%;
+  text-align: center;
+}
 
 
 
