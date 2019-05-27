@@ -22,6 +22,56 @@ export default {
     $('#player-3-bank').text(player3);
   },
   roundOver() {
-    $('.main').hide()
+    // $('.main').hide()
+  },
+  displayPuzzle(gameBoardPuzzle) {
+    gameBoardPuzzle.map(letter => {
+      if (letter !== " ") {
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+        $('.' + letter).hide()
+      } else {
+        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+        console.log('lettertest')
+        // $('.' + letter).css('background-color', 'black')
+      }
+    }) 
+  },
+  displayCategoryHint(currentCategory, currentDescription) {
+    $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
+  },
+  removeDom() {
+    $('.puzzle-container').text('')
+    $('.category-hint').text('')
+    $('.main-letters').text('')
+  },
+  appendLetters() {
+  $('.main-letters').append(`
+  <button class='vowel-a vow' disabled>A</button>
+  <button class='consonant-b con'>B</button>
+  <button class='consonant-c con'>C</button>
+  <button class='consonant-d con'>D</button>
+  <button class='vowel-e vow' disabled>E</button>
+  <button class='consonant-f con'>F</button>
+  <button class='consonant-g con'>G</button>
+  <button class='consonant-h con'>H</button>
+  <button class='vowel-i vow' disabled>I</button>
+  <button class='consonant-i con'>J</button>
+  <button class='consonant-j con'>K</button>
+  <button class='consonant-k con'>L</button>
+  <button class='vowel-o vow' disabled>O</button>
+  <button class='consonant-l con'>M</button>
+  <button class='consonant-m con'>N</button>
+  <button class='consonant-n con'>P</button>
+  <button class='consonant-o con'>Q</button>
+  <button class='consonant-p con'>R</button>
+  <button class='consonant-q con'>S</button>
+  <button class='consonant-t con'>T</button>
+  <button class='vowel-u vow' disabled>U</button>
+  <button class='consonant-v con'>V</button>
+  <button class='consonant-w con'>W</button>
+  <button class='consonant-x con'>Y</button>
+  <button class='consonant-y con'>X</button>
+  <button class='consonant-z con'>Z</button>
+  `)
   }
 } 

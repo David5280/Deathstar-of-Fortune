@@ -1,13 +1,14 @@
 import domUpdates from './domUpdates.js';
 
 class Round {
-  constructor(wheel, currentPuzzle, players, turn)  {
+  constructor(wheel, currentPuzzle, players, turn, turnCount, game)  {
     this.wheel = wheel;
     this.puzzle = currentPuzzle;
     this.players = players;
     this.turn = turn;
-    this.turnCount = 0;
+    this.turnCount = turnCount || 0;
     this.correctGuessCount = 0
+    this.game = game;
 
   }
 
@@ -69,10 +70,11 @@ class Round {
       currentPlayer.bank += currentPlayer.score;
       this.players.forEach(player => {
       player.score = 0;
+      })
       domUpdates.changeBank(this.players[0].bank, this.players[1].bank, this.players[2].bank)
       domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
       domUpdates.roundOver()
-      })
+      this.game.roundOver()
     }
   }
 

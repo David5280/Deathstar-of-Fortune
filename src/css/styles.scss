@@ -129,6 +129,14 @@ main {
       margin: 5px;
       padding: 15px;
     }
+  & .puzzle-letters-black{
+    background-color: black;
+    box-sizing: border-box;
+    color: black;
+    list-style: none;
+    margin: 5px;
+    padding: 15px;
+  }
   }
 }
 
