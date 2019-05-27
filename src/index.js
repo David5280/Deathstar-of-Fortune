@@ -41,7 +41,7 @@ game.makeSelectedPuzzle(testData)
 game.createWheel(testData.wheel)
 game.start(testData.wheel)
 
-
+console.log(game.round.puzzle)
 
 const currentCategory = game.selectedPuzzles[game.roundCounter].category;
 const currentDescription = game.selectedPuzzles[game.roundCounter].description;
@@ -55,6 +55,9 @@ $(document).ready(function() {
 
   $('.con').attr('disabled', true),
   $('.vow').attr('disabled', true)
+
+  $('.guess-word-input').hide()
+  $('.guess-word-submit').hide()
 
   $('.middle-section').append(`
   <section class='pre-game-form'>
@@ -105,29 +108,73 @@ $(document).ready(function() {
     game.round.spinWheel()
     $('.con').attr('disabled', false);
     let spinValue =  game.round.wheel.spinValue;
-    console.log(game.round.wheel.currentValues);
-    $('.death-star-container').append(`<h3 class='spin-value'>${spinValue}</h3>`);
+    $('.spin').attr('disabled', true);
+    $('.guess-word').attr('disabled', true);
+    $('.death-star-container').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
     if (spinValue === 'BANKRUPT' || spinValue === 'LOSE A TURN') {
       $(".spin-value").show().delay(2000).fadeOut();
       $('.con').attr('disabled', true);
+      $('.spin').attr('disabled', false);
+      $('.guess-word').attr('disabled', false);
     }
+    $('.buy-vowel').attr('disabled', true);
   });
   
 
   $('.main-letters').click(function(event) { 
-    let playerGuess = $(event.target).text()
-    if (game.round.guessLetter(playerGuess) > 0 ) {
-      $('.' + playerGuess).show()
-      $(".spin-value").remove()
+    console.log(event.target.className)
+    if (event.target.className.includes('con')) {
+      $('.spin').attr('disabled', false);
+      $('.guess-word').attr('disabled', false);
+      let playerGuess = $(event.target).text()
+      if (game.round.guessLetter(playerGuess) > 0 ) {
+        $('.' + playerGuess).show()
+        $(".spin-value").remove()
+      }
+      $('.con').attr('disabled', true);
+      $(event.target).removeClass('con');
     }
-    $('.con').attr('disabled', true);
-    $(event.target).removeClass('con');
   })
 
-  $('.guess-word').click(function() {
+  $('.guess-word').click(function(event) {
+    event.preventDefault()
+    $('.guess-word-input').show()
+    $('.guess-word-submit').show()
+    $('.turn-buttons').hide();
+    $('.con').attr('id', 'guess-word-letters')
+    $('.vow').attr('id', 'guess-word-letters')
+  })
+
+  $('.guess-word-submit').click(function(event) {
+    event.preventDefault()
     let wordValue = $('.guess-word-input').val()
     game.round.guessAnswer(wordValue)
     game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
+    $('.guess-word-input').hide().delay(2000).fadeOut();
+    $('.guess-word-submit').hide().delay(2000).fadeOut();
+    $('.turn-buttons').show().delay(2000).fadeIn();
+    $('.con').attr('id', '')
+    $('.vow').attr('id', '')
+    $('.buy-vowel').attr('disabled', true);
+  })
+
+  $('.buy-vowel').click(function() {
+    $('.vow').attr('disabled', false);
+    $('.spin').attr('disabled', true);
+    $('.guess-word').attr('disabled', true);
+  })
+
+  $('.main-letters').click(function(event) {
+    if (event.target.className.includes('vow')) {
+      let playerGuess = $(event.target).text()
+      if (game.round.buyVowel(playerGuess) > 0 ) {
+        $('.' + playerGuess).show()
+      }
+      $('.spin').attr('disabled', false);
+      $('.guess-word').attr('disabled', false);
+      $('.vow').attr('disabled', true);
+      $(event.target).removeClass('vow');
+    }
   })
 
   displayPuzzle()

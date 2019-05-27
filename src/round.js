@@ -16,6 +16,7 @@ class Round {
     let id = this.players[this.turnCount].id
     domUpdates.addPlayerBorder(id)
     domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
+    domUpdates.enableBuyVowel(this.returnCurrentPlayer().score)
   }
 
   returnCurrentPlayer() {
