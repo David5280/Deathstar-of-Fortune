@@ -23,10 +23,11 @@ class Game {
     this.turn = new Turn(this.selectedPuzzles
       [this.roundCounter - 1])
     this.round = new Round(this.wheel, this.selectedPuzzles
-      [this.roundCounter - 1], this.players, this.turn, this)
+      [this.roundCounter - 1], this.players, this.turn, this.round.turnCount, this)
     let gameBoardPuzzle = this.round.returnCurrentAnswer()
     domUpdates.displayPuzzle(gameBoardPuzzle)
     domUpdates.displayCategoryHint(this.round.puzzle.category, this.round.puzzle.description)
+    domUpdates.appendLetters()
     console.log(this.round.returnCurrentAnswer())
     return
   }

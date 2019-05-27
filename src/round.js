@@ -1,12 +1,12 @@
 import domUpdates from './domUpdates.js';
 
 class Round {
-  constructor(wheel, currentPuzzle, players, turn, game)  {
+  constructor(wheel, currentPuzzle, players, turn, turnCount, game)  {
     this.wheel = wheel;
     this.puzzle = currentPuzzle;
     this.players = players;
     this.turn = turn;
-    this.turnCount = 0;
+    this.turnCount = turnCount || 0;
     this.correctGuessCount = 0
     this.game = game;
 
