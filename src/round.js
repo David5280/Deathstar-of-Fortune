@@ -7,6 +7,7 @@ class Round {
     this.players = players;
     this.turn = turn;
     this.turnCount = 0;
+    this.correctGuessCount = 0
 
   }
 
@@ -28,7 +29,8 @@ class Round {
   }
 
   guessAnswer(guess) {
-    this.turn.guessAnswer(guess) ? this.roundOver() : this.incremenTurnCount()
+    this.turn.guessAnswer(guess) ? this.correctGuessCount = this.puzzle.correctAnswer.length : this.incremenTurnCount()
+    this.roundOver()
   }
 
   spinWheel() {
@@ -37,46 +39,55 @@ class Round {
     if (spinValue === 'BANKRUPT') {
       this.returnCurrentPlayer().score = 0;
       this.incremenTurnCount();
-      console.log("bankrupt")
       return 'BANKRUPT';
     } else if (spinValue === 'LOSE A TURN') {
       this.incremenTurnCount();
-      console.log("lose turn")
       return 'LOSE A TURN'
     }
   }
 
   guessLetter(playerGuess) {
-    // console.log(this.turnCount);
-    // console.log(this.wheel.currentValues);
     let spinValue = this.wheel.spinValue
     let correctLetterCount = this.turn.guessLetter(playerGuess);
     if (correctLetterCount === 0) {
       this.incremenTurnCount();
       return 0;
     } else {
+      console.log(correctLetterCount)
+      this.correctGuessCount += correctLetterCount
       this.returnCurrentPlayer().score += spinValue * correctLetterCount;
       domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
+      this.roundOver()
+      domUpdates.enableBuyVowel(this.returnCurrentPlayer().score)
       return this.returnCurrentPlayer().score;
-    }
+    } 
   }
 
   roundOver() {
-    let currentPlayer = this.returnCurrentPlayer();
-    currentPlayer.bank += currentPlayer.score;
-    this.players.forEach(player => {
+    if (this.correctGuessCount === this.puzzle.correctAnswer.length) {
+      let currentPlayer = this.returnCurrentPlayer();
+      currentPlayer.bank += currentPlayer.score;
+      this.players.forEach(player => {
       player.score = 0;
-    })
+      domUpdates.changeBank(this.players[0].bank, this.players[1].bank, this.players[2].bank)
+      domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
+      domUpdates.roundOver()
+      })
+    }
   }
 
 
 
   buyVowel(vowel) {
     this.returnCurrentPlayer().score -= 100;
+    domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
     if (this.turn.guessLetter(vowel) === 0) {
       this.incremenTurnCount()
       return 0
     } else {
+      let correctLetters = this.turn.guessLetter(vowel)
+      this.correctGuessCount += correctLetters
+      this.roundOver()
       return this.turn.guessLetter(vowel)
     }
   }

@@ -1,11 +1,14 @@
 import chai from 'chai';
 const expect = chai.expect;
+import spies from 'chai-spies';
+chai.use(spies);
 import Puzzle from '../src/puzzle.js'
 import Turn from '../src/turn.js'
 import testData from '../data/test_data_set.js'
 import Round from '../src/round.js';
 import Player from '../src/player.js';
 import Wheel from '../src/wheel.js'
+import domUpdates from '../src/domUpdates.js';
 
 
 describe('Round', function() {
@@ -31,7 +34,15 @@ describe('Round', function() {
       testData1.first_word, testData1.description, testData1.correct_answer.toUpperCase().split(''))
     turn = new Turn(puzzle1)
     round = new Round(wheel, puzzle1, [Player1, Player2, Player3], turn)
-
+    chai.spy.on(domUpdates, 'removeSpinValue', () => true);
+    chai.spy.on(domUpdates, 'addPlayerBorder', () => true);
+    chai.spy.on(domUpdates, 'changeScore', () => true);
+    chai.spy.on(domUpdates, 'enableBuyVowel', () => true);
+    chai.spy.on(domUpdates, 'changeBank', () => true);
+    chai.spy.on(domUpdates, 'roundOver', () => true);
+  })
+  afterEach(function() {
+    chai.spy.restore(domUpdates);
   })
   it('be an instance of round', function() {
     expect(round).to.be.an.instanceOf(Round)
