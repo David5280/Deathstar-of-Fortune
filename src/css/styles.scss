@@ -4,15 +4,15 @@ HTML {
 body {
   background-image: url('../images/starwarsbackground.jpg');
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  height: 1vh;
+  font-family: STARWARS, Arial, Helvetica, sans-serif;
+  height: 1vh;  
 }
 
 header {
   font-size: 30px;
   color: #ffd700;
   text-align: center;
-  text-shadow: 2px 2px 4px;
+  // text-shadow: 2px 2px 4px;
     & h1 {
       margin: 25px 0px;
     }
@@ -274,5 +274,16 @@ h3 {
 }
 
 #guess-word-letters {
+  color: white;
+}
+
+#pause-button { 
+  background-color:#7F8C8D;
+  height: 35px;
+  width: 55px;
+  margin-left: 10px;
+ }
+#pause-button:hover { 
+  background-color:#C0392B;
   color: white;
 }

@@ -177,6 +177,15 @@ $(document).ready(function() {
     }
   })
 
+  $('#pause-button').click(function() {
+    $('#swThemeAudio').each(function(){ 
+        var frame = document.getElementById("swThemeAudio");
+        frame.contentWindow.postMessage(
+          '{"event":"command","func":"pauseVideo","args":""}',
+          '*'); 
+    });
+});
+
   displayPuzzle()
   console.log(game.round.returnCurrentAnswer())
 
