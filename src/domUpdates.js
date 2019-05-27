@@ -22,6 +22,25 @@ export default {
     $('#player-3-bank').text(player3);
   },
   roundOver() {
-    $('.main').hide()
+    // $('.main').hide()
+  },
+  displayPuzzle(gameBoardPuzzle) {
+    gameBoardPuzzle.map(letter => {
+      if (letter !== " ") {
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+        $('.' + letter).hide()
+      } else {
+        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+        console.log('lettertest')
+        // $('.' + letter).css('background-color', 'black')
+      }
+    }) 
+  },
+  displayCategoryHint(currentCategory, currentDescription) {
+    $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
+  },
+  removeDom() {
+    $('.puzzle-container').text('')
+    $('.category-hint').text('')
   }
 } 

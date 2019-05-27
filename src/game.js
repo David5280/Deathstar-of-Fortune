@@ -3,6 +3,7 @@ import PuzzleBank from '../src/PuzzleBank.js'
 import Wheel from './wheel.js';
 import Turn from './turn.js';
 import Round from './round.js';
+import domUpdates from './domUpdates.js';
 
 class Game {
   constructor(players) {
@@ -17,16 +18,21 @@ class Game {
     this.wheel = new Wheel(wheelValues)
   }
 
-  start(wheelValues) {
+  start() {
     this.wheel.selectCurrentValues()
     this.turn = new Turn(this.selectedPuzzles
       [this.roundCounter - 1])
     this.round = new Round(this.wheel, this.selectedPuzzles
-      [this.roundCounter - 1], this.players, this.turn)
+      [this.roundCounter - 1], this.players, this.turn, this)
+    let gameBoardPuzzle = this.round.returnCurrentAnswer()
+    domUpdates.displayPuzzle(gameBoardPuzzle)
+    domUpdates.displayCategoryHint(this.round.puzzle.category, this.round.puzzle.description)
+    console.log(this.round.returnCurrentAnswer())
+    return
   }
   roundOver() {
-    this.round.roundOver();
     this.roundCounter++;
+    domUpdates.removeDom()
     this.start();
   }
   makeSelectedPuzzle(data) {

@@ -94,17 +94,17 @@ $(document).ready(function() {
 
 
 
-  $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
+  // $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
 
-  function displayPuzzle() {
-    let gameBoardPuzzle = game.round.returnCurrentAnswer()
-    gameBoardPuzzle.map(letter => {
-      if (letter !== " ") {
-        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-        $('.' + letter).hide()
-      }
-    }) 
-  }
+  // function displayPuzzle() {
+  //   let gameBoardPuzzle = game.round.returnCurrentAnswer()
+  //   gameBoardPuzzle.map(letter => {
+  //     if (letter !== " ") {
+  //       $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+  //       $('.' + letter).hide()
+  //     }
+  //   }) 
+  // }
 
   $('.spin').click(function() {
     game.round.spinWheel()
@@ -178,8 +178,5 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
-
-  displayPuzzle()
-  console.log(game.round.returnCurrentAnswer())
 
 });
