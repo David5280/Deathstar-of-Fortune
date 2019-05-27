@@ -14,7 +14,14 @@ export default {
     $('#player-3-score').text(player3);
   },
   enableBuyVowel(currentPlayer) {
-    console.log(currentPlayer)
     currentPlayer >= 100 ? $('.buy-vowel').attr('disabled', false) : null
+  },
+  changeBank(player1, player2, player3) {
+    $('#player-1-bank').text(player1);
+    $('#player-2-bank').text(player2);
+    $('#player-3-bank').text(player3);
+  },
+  roundOver() {
+    $('.main').hide()
   }
 } 

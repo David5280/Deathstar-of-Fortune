@@ -36,6 +36,9 @@ function createGame(Player1, Player2, Player3) {
   return game
 }
 
+
+
+
 let game = createGame()
 game.makeSelectedPuzzle(testData)
 game.createWheel(testData.wheel)
@@ -81,8 +84,8 @@ $(document).ready(function() {
     $('#js-player2-name').text($('.p2').val() || 'Player 2');
     $('#js-player3-name').text($('.p3').val() || 'Player 3');
     $('.main-letters').delay(3000).fadeIn();
-    $('#deathstar').delay(3000).fadeIn();;
-    $('.turn-controls').delay(3000).fadeIn();;
+    $('#deathstar').delay(3000).fadeIn();
+    $('.turn-controls').delay(3000).fadeIn();
   });
 
 
@@ -98,7 +101,6 @@ $(document).ready(function() {
     gameBoardPuzzle.map(letter => {
       if (letter !== " ") {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-        // $('.puzzle-letters').css('color', 'white')
         $('.' + letter).hide()
       }
     }) 
