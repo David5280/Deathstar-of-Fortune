@@ -1,16 +1,22 @@
+$white: #D3D3D3;
+$yellow: #ffd700;
+$deathStarGlow: #ffffff77;
+
+
 HTML {
   width: 100%;
+  height: 100%;
 }
 body {
   background-image: url('../images/starwarsbackground.jpg');
-  color: #fff;
+  color: $white;
   font-family: Arial, Helvetica, sans-serif;
   height: 1vh;
 }
 
 header {
   font-size: 30px;
-  color: #ffd700;
+  color: $yellow;
   text-align: center;
   text-shadow: 2px 2px 4px;
     & h1 {
@@ -73,7 +79,7 @@ main {
   padding: 40px;
   & button {
     background-color: black;
-    color: #fff;
+    color: $white;
     font-size: 20px;
     border: none;
     transition: all .2s ease-in-out;
@@ -94,7 +100,7 @@ main {
   flex: 6;
   & .category-hint {
     align-items: center;
-    color: #f0f0f0;
+    color: $white;
     display: flex;
     flex-direction: column;
     flex: 3;
@@ -121,7 +127,7 @@ main {
     justify-self: center;
     margin: auto;
     & .puzzle-letters {
-      background-color: white;
+      background-color: $white;
       box-sizing: border-box;
       color: black;
       list-style: none;
@@ -157,7 +163,7 @@ main {
     flex-direction: column;
     width: 40%;
     & .player-name-inputs {
-      background-color: #f0f0f0;
+      background-color: $white;
       border: none;
       color: black;
       font-size: 20px;
@@ -170,7 +176,7 @@ main {
 
 .puzzle-letters {
   list-style: none;
-  background-color: white;
+  background-color: $white;
   color: black;
   margin: 5px;
   display: flex;
@@ -209,11 +215,10 @@ main {
 }
 
 .current-player {
-  border: solid 2px #ffd700;
+  border: solid 2px $yellow;
 }
 .roll-in {
-  -webkit-animation: roll-in 0.6s ease-in-out both;
-	        animation: roll-in 0.6s ease-in-out both;
+	animation: roll-in 0.6s ease-in-out both;
 }
 
 
@@ -234,40 +239,32 @@ h3 {
 }
 @-webkit-keyframes roll-in {
   0% {
-    -webkit-transform: translateX(-1000px) rotate(-720deg);
             transform: translateX(-1000px) rotate(-720deg);
-    -webkit-filter: blur(50px);
             filter: blur(50px);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateX(0) rotate(0deg);
             transform: translateX(0) rotate(0deg);
-    -webkit-filter: blur(0);
             filter: blur(0);
     opacity: 1;
   }
 }
 @-webkit-keyframes swirl-in-fwd {
   0% {
-    -webkit-transform: rotate(-540deg) scale(0);
             transform: rotate(-540deg) scale(0);
     opacity: 0;
   }
   100% {
-    -webkit-transform: rotate(0) scale(1);
             transform: rotate(0) scale(1);
     opacity: 1;
   }
 }
 @keyframes swirl-in-fwd {
   0% {
-    -webkit-transform: rotate(-540deg) scale(0);
             transform: rotate(-540deg) scale(0);
     opacity: 0;
   }
   100% {
-    -webkit-transform: rotate(0) scale(1);
             transform: rotate(0) scale(1);
     opacity: 1;
   }
@@ -281,5 +278,5 @@ h3 {
 }
 
 #guess-word-letters {
-  color: white;
+  color: $white;
 }
