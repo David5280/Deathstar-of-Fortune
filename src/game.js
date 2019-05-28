@@ -8,12 +8,13 @@ import BonusRound from './BonusRound.js';
 
 class Game {
   constructor(players) {
-    this.selectedPuzzles = []
-    this.roundCounter = 1
-    this.players = players
-    this.wheel = {}
-    this.turn = {}
-    this.round =  {}
+    this.selectedPuzzles = [];
+    this.roundCounter = 1;
+    this.players = players;
+    this.wheel = {};
+    this.turn = {};
+    this.round =  {};
+    this.bonusRound = {};
   }
   createWheel(wheelValues) {
     this.wheel = new Wheel(wheelValues)
@@ -29,25 +30,28 @@ class Game {
     domUpdates.displayPuzzle(gameBoardPuzzle)
     domUpdates.displayCategoryHint(this.round.puzzle.category, this.round.puzzle.description)
     domUpdates.appendLetters()
-    console.log(this.round.returnCurrentAnswer())
     return
   }
   roundOver() {
     domUpdates.removeDom()
     if (this.roundCounter === 4) {
-      let bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
-      let topPlayer = bonusRound.findTopPlayer()
+      domUpdates.removeDom()
+      this.bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
+      // let topPlayer = this.bonusRound.findTopPlayer()
       console.log('over4')
-      // domUpdates.displayCategoryHint(bonusRound.puzzle.category, bonusRound.puzzle.description)
-      // domUpdates.appendLetters()
-      // domUpdates.removeLosersBonus(bonusRound.topPlayer);
-      // domUpdates.displayPuzzle(bonusRound.returnCurrentAnswer());
-      domUpdates.postGameBonusPrompt1(topPlayer)
+      domUpdates.displayCategoryHint(this.bonusRound.puzzle.category, this.bonusRound.puzzle.description)
+      domUpdates.appendLetters()
+      domUpdates.removeLosersBonus(this.bonusRound.topPlayer);
+      let gameBoardPuzzle = this.selectedPuzzles[4].correctAnswer;
+      domUpdates.displayPuzzle(gameBoardPuzzle);
+      domUpdates.displayBonusLetters(['r', 's', 'l', 'n', 't', 'e']);
+      // this.roundCounter++;
     } else {
       this.roundCounter++;
       this.start();
     }
   }
+
   makeSelectedPuzzle(data) {
     this.selectedPuzzles = []
     let keys = Object.keys(data.puzzles)
@@ -62,6 +66,7 @@ class Game {
       this.selectedPuzzles.push(choosenPuzzle)
     })
   }
+
   makeBonusPuzz(data) {
     let newPuzzles = data.puzzles.four_word_answers.puzzle_bank.map((puzz) =>{
       let puzzle = new Puzzle(puzz.category, puzz.number_of_words, puzz.total_number_of_letters, 

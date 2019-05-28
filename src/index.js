@@ -24,6 +24,20 @@ import Game from './game';
 let wheel;
 let turn;
 let round;
+let game;
+
+var data;
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(parsedData) {
+    data = parsedData.data
+    console.log(data)
+  })
+  .catch(err => console.error(err));
+
+
 
 function createGame(Player1, Player2, Player3) {
   let players = createPlayers(Player1, Player2, Player3)
@@ -38,17 +52,17 @@ function createPlayers(Player1, Player2, Player3) {
   return [player1, player2, player3]
 }
 
-let game = createGame()
-game.makeSelectedPuzzle(testData)
-game.makeBonusPuzz(testData);
-game.createWheel(testData.wheel)
-game.start(testData.wheel)
+function startGame(data) {
+  game = createGame()
+  game.makeSelectedPuzzle(data)
+  game.makeBonusPuzz(data);
+  game.createWheel(data.wheel)
+  game.start(data.wheel)
+  console.log(game.selectedPuzzles)
+}
 
-console.log(game.selectedPuzzles)
-
-
-const currentCategory = game.selectedPuzzles[game.roundCounter].category;
-const currentDescription = game.selectedPuzzles[game.roundCounter].description;
+// const currentCategory = game.selectedPuzzles[game.roundCounter].category;
+// const currentDescription = game.selectedPuzzles[game.roundCounter].description;
 
 $(document).ready(function() {
 
@@ -56,9 +70,6 @@ $(document).ready(function() {
   $('.main-letters').hide();
   $('.turn-controls').hide();
   $('.1').css('border', "white solid 2px")
-
-  $('.con').attr('disabled', true),
-  $('.vow').attr('disabled', true)
 
   $('.guess-word-input').hide()
   $('.guess-word-submit').hide()
@@ -75,9 +86,10 @@ $(document).ready(function() {
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
+    startGame(data);
     $('.pre-game-form').fadeOut();
     $('.pregame-prompt-container').append(`
-      < ection class='pre-game-form prompt'>
+      <section class='pre-game-form prompt'>
         <h3 class='pregame-prompt'>Welcome!  Use the buttons below to take your turn, and keep track of points in the boxes to the left!</h3>
         </section>
     `).delay(3000).fadeOut();
@@ -89,23 +101,6 @@ $(document).ready(function() {
     $('.turn-controls').delay(3000).fadeIn();
   });
 
-
-
-
-
-
-
-  // $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
-
-  // function displayPuzzle() {
-  //   let gameBoardPuzzle = game.round.returnCurrentAnswer()
-  //   gameBoardPuzzle.map(letter => {
-  //     if (letter !== " ") {
-  //       $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-  //       $('.' + letter).hide()
-  //     }
-  //   }) 
-  // }
 
   $('.spin').click(function() {
     game.round.spinWheel()
@@ -181,5 +176,4 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
-
 });

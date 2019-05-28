@@ -27,7 +27,9 @@ export default {
   },
   displayPuzzle(gameBoardPuzzle) {
     gameBoardPuzzle.map(letter => {
-      if (letter !== " ") {
+      if (letter === '&') {
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+      } else if (letter !== ' ') {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
         $('.' + letter).hide()
       } else {
@@ -72,6 +74,8 @@ export default {
   <button class='consonant-y con'>X</button>
   <button class='consonant-z con'>Z</button>
   `)
+  $('.con').attr('disabled', true);
+  $('.vow').attr('disabled', true);
   },
   removeLosersBonus(bonusPlayer) {
     $('.main-score-cards').text('');
@@ -88,5 +92,10 @@ export default {
     <h3 class='preBonusText'>Congratulations ${winner}.  Time for a bonus round.  Spin the wheel to select a potential prize.</h3>
     <button class='postGame-spinBtn'>SPIN</button>
     `)
+  },
+  displayBonusLetters(letters) {
+    letters.forEach(letter => {
+      $('.' + letter).show()
+    })
   }
 } 
