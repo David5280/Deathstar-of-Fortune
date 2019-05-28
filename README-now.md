@@ -36,8 +36,12 @@ their skills manipulating class properties and methods across files, testing, an
 
 Splash Page
 
+<img width="1037" alt="DSofFortune Splash" src="https://user-images.githubusercontent.com/17992280/58518664-40cb6280-816d-11e9-9c79-64899b6722ab.png">
+
 
 Gameplay
+
+<img width="1440" alt="DSofFortune Game Play" src="https://user-images.githubusercontent.com/17992280/58518679-58a2e680-816d-11e9-907f-bee8b9c3368a.png">
 
 
 Bonus Round
