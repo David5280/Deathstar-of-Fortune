@@ -153,9 +153,9 @@ $(document).ready(function() {
     let wordValue = $('.guess-word-input').val()
     game.round.guessAnswer(wordValue)
     game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
-    $('.guess-word-input').hide().delay(2000).fadeOut();
-    $('.guess-word-submit').hide().delay(2000).fadeOut();
-    $('.turn-buttons').show().delay(2000).fadeIn();
+    $('.guess-word-input').hide().fadeOut();
+    $('.guess-word-submit').hide().fadeOut();
+    $('.turn-buttons').show().fadeIn();
     $('.con').attr('id', '')
     $('.vow').attr('id', '')
     $('.buy-vowel').attr('disabled', true);
