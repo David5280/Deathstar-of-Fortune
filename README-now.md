@@ -37,7 +37,7 @@ their skills manipulating class properties and methods across files, testing, an
 Splash Page
 
 
-Gameplay
+Gameplay-1
 
 
 Bonus Round
