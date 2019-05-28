@@ -45,6 +45,6 @@ Bonus Round
 
 ## Contributors
 
-- David (https://github.com/David5280)
+- David Engel (https://github.com/David5280)
 - Evan Markowitz (https://github.com/evanmarkowitz)
 - Jon O'Drobinak (https://github.com/Triplemanus)
