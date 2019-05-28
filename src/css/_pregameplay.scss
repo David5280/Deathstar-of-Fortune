@@ -1,0 +1,40 @@
+.pregame-prompt-container {
+  align-items: center;
+  background-image: url('../images/starwarsbackground.jpg');
+  display: flex;
+  height: 85%;
+  justify-content: center;
+  position: absolute;
+  width: 80%;
+  font-size: 28px;
+}
+
+.pre-game-form {
+  background-image: url('../images/starwarsbackground.jpg');
+  display: flex;
+  align-items: center;
+  height: 75%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  & .player-names {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+  & .player-name-inputs {
+    background-color: $white;
+    border: none;
+    color: black;
+    font-size: 20px;
+    height: 40px;
+    margin: 20px 0px;
+    padding: 5px;
+  }
+  & h3 {
+    margin-left: 20%;
+    text-align: center;
+  }
+}
+
+
