@@ -29,12 +29,12 @@ class Game {
     domUpdates.displayPuzzle(gameBoardPuzzle)
     domUpdates.displayCategoryHint(this.round.puzzle.category, this.round.puzzle.description)
     domUpdates.appendLetters()
-    console.log(this.round.returnCurrentAnswer())
     return
   }
   roundOver() {
     domUpdates.removeDom()
     if (this.roundCounter === 4) {
+      domUpdates.removeDom()
       let bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
       bonusRound.findTopPlayer()
       console.log('over4')
@@ -42,7 +42,9 @@ class Game {
       domUpdates.appendLetters()
       bonusRound.findTopPlayer();
       domUpdates.removeLosersBonus(bonusRound.topPlayer);
-      domUpdates.displayPuzzle(bonusRound.returnCurrentAnswer());
+      let gameBoardPuzzle = bonusRound.returnCurrentAnswer()
+      domUpdates.displayPuzzle(gameBoardPuzzle);
+      domUpdates.displayBonusLetters(['r', 's', 'l', 'n', 't', 'e'])
     } else {
       this.roundCounter++;
       this.start();

@@ -24,6 +24,20 @@ import Game from './game';
 let wheel;
 let turn;
 let round;
+let game;
+
+var data;
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data')
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(parsedData) {
+    data = parsedData.data
+    console.log(data)
+  })
+  .catch(err => console.error(err));
+
+
 
 function createPlayers(Player1, Player2, Player3) {
   let player1 = new Player(Player1, 1)
@@ -38,17 +52,20 @@ function createGame(Player1, Player2, Player3) {
   return game
 }
 
-let game = createGame()
-game.makeSelectedPuzzle(testData)
-game.makeBonusPuzz(testData);
-game.createWheel(testData.wheel)
-game.start(testData.wheel)
+function startGame(data) {
+  game = createGame()
+  game.makeSelectedPuzzle(data)
+  game.makeBonusPuzz(data);
+  game.createWheel(data.wheel)
+  game.start(data.wheel)
+  console.log(game.selectedPuzzles)
+}
 
-console.log(game.selectedPuzzles)
 
 
-const currentCategory = game.selectedPuzzles[game.roundCounter].category;
-const currentDescription = game.selectedPuzzles[game.roundCounter].description;
+
+// const currentCategory = game.selectedPuzzles[game.roundCounter].category;
+// const currentDescription = game.selectedPuzzles[game.roundCounter].description;
 
 $(document).ready(function() {
 
@@ -75,6 +92,7 @@ $(document).ready(function() {
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
+    startGame(data);
     $('.pre-game-form').fadeOut();
     $('.pregame-prompt-container').append(`
       <section class='pre-game-form prompt'>
@@ -89,23 +107,6 @@ $(document).ready(function() {
     $('.turn-controls').delay(3000).fadeIn();
   });
 
-
-
-
-
-
-
-  // $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
-
-  // function displayPuzzle() {
-  //   let gameBoardPuzzle = game.round.returnCurrentAnswer()
-  //   gameBoardPuzzle.map(letter => {
-  //     if (letter !== " ") {
-  //       $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-  //       $('.' + letter).hide()
-  //     }
-  //   }) 
-  // }
 
   $('.spin').click(function() {
     game.round.spinWheel()

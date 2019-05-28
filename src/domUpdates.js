@@ -27,7 +27,9 @@ export default {
   },
   displayPuzzle(gameBoardPuzzle) {
     gameBoardPuzzle.map(letter => {
-      if (letter !== " ") {
+      if (letter === '&') {
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
+      } else if (letter !== ' ') {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
         $('.' + letter).hide()
       } else {
@@ -82,5 +84,10 @@ export default {
     <h3>Bank:<span id='${bonusPlayer}-bank'>${bonusPlayer.bank}</span></h3>
   </article>
   `)
+  }
+  displayBonusLetters(letters) {
+    letters.forEach(letter => {
+      $('.' + letter).show()
+    })
   }
 } 
