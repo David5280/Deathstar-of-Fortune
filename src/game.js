@@ -29,7 +29,6 @@ class Game {
     domUpdates.displayPuzzle(gameBoardPuzzle)
     domUpdates.displayCategoryHint(this.round.puzzle.category, this.round.puzzle.description)
     domUpdates.appendLetters()
-    console.log(this.round.returnCurrentAnswer())
     return
   }
   roundOver() {
