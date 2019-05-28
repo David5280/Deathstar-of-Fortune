@@ -8,13 +8,13 @@ import BonusRound from './BonusRound.js';
 
 class Game {
   constructor(players) {
-    this.selectedPuzzles = [];
-    this.roundCounter = 1;
-    this.players = players;
-    this.wheel = {};
-    this.turn = {};
-    this.round =  {};
-    this.bonusRound = {};
+    this.selectedPuzzles = []
+    this.roundCounter = 1
+    this.players = players
+    this.wheel = {}
+    this.turn = {}
+    this.round =  {}
+    this.bonusRound = {}
   }
   createWheel(wheelValues) {
     this.wheel = new Wheel(wheelValues)
@@ -34,26 +34,18 @@ class Game {
   }
   roundOver() {
     domUpdates.removeDom()
-    if (this.roundCounter === 4) {
-      $('.header-round-indicator').text('****BONUS ROUND****')
-      domUpdates.removeDom()
+    this.roundCounter++;
+    this.start();
+    if (this.roundCounter === 5) {
       this.bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
-      // let topPlayer = this.bonusRound.findTopPlayer()
-      console.log('over4')
-      domUpdates.displayCategoryHint(this.bonusRound.puzzle.category, this.bonusRound.puzzle.description)
-      domUpdates.appendLetters()
-      domUpdates.removeLosersBonus(this.bonusRound.topPlayer);
-      let gameBoardPuzzle = this.selectedPuzzles[4].correctAnswer;
-      domUpdates.displayPuzzle(gameBoardPuzzle);
-      domUpdates.displayBonusLetters(['r', 's', 'l', 'n', 't', 'e']);
-      // this.roundCounter++;
-    } else {
-      this.roundCounter++;
-      $('.header-round-indicator').text(`Round ${this.roundCounter}`)
-      this.start();
-    }
+      this.bonusRound.findTopPlayer()
+      let topPlayer = this.bonusRound.topPlayer
+      console.log(topPlayer)
+      domUpdates.removeLosersBonus(topPlayer);
+      domUpdates.displayBonusLetters(['R', 'S', 'L', 'N', 'T', 'E'])
+      domUpdates.createBonusControls()
+    } 
   }
-
   makeSelectedPuzzle(data) {
     this.selectedPuzzles = []
     let keys = Object.keys(data.puzzles)
@@ -68,7 +60,6 @@ class Game {
       this.selectedPuzzles.push(choosenPuzzle)
     })
   }
-
   makeBonusPuzz(data) {
     let newPuzzles = data.puzzles.four_word_answers.puzzle_bank.map((puzz) =>{
       let puzzle = new Puzzle(puzz.category, puzz.number_of_words, puzz.total_number_of_letters, 

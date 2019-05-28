@@ -26,14 +26,16 @@ export default {
     
   },
   displayPuzzle(gameBoardPuzzle) {
+    let regex = /[a-zA-Z]/
     gameBoardPuzzle.map(letter => {
-      if (letter === '&') {
-        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-      } else if (letter !== ' ') {
+      if (letter === ' ') {
+        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+      } else if (letter.match(regex)) {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
         $('.' + letter).hide()
-      } else {
-        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+      }
+      else {
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p>${letter}</p></li>`)
       }
     }) 
   },
@@ -94,8 +96,20 @@ export default {
     `)
   },
   displayBonusLetters(letters) {
-    letters.forEach(letter => {
+    letters.map(letter => {
+      console.log(letter)
       $('.' + letter).show()
     })
+  },
+  createBonusControls() {
+    $('.spin').remove()
+    $('.buy-vowel').remove()
+    $('.turn-buttons').append(`<button class='spin-bonus' type='button'>SPIN</button>`)
+  },
+  disableConst() {
+    $('.con').attr('disabled', true)
+  },
+  disableVow() {
+    $('.vow').attr('disabled', true);
   }
 } 

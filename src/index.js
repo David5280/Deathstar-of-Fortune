@@ -177,4 +177,28 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
+  $('.turn-buttons').click(function(event) {
+    console.log(event.target)
+    console.log(event.target.className)
+    if (event.target.className.includes('spin-bonus')) {
+      console.log('hi')
+      game.bonusRound.createBonusWheel()
+      let spinValue = game.bonusRound.bonusValue
+      $('.puzzle').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
+      $('.con').attr('disabled', false);
+      $('.vow').attr('disabled', false);
+    }
+  })
+  $('.main-letters').click(function(event) {
+    if (game.roundCounter > 4 && event.target.className.includes('con')) {
+      game.bonusRound.turnCountConstInc()
+    } else if (game.roundCounter > 4 && event.target.className.includes('vow')) {
+      game.bonusRound.turnCountVowInc()
+    }
+    if (game.roundCounter > 4 && game.bonusRound.turnCountConst < 3) {
+      $('.con').attr('disabled', false);
+    } else if (game.roundCounter > 4 && game.bonusRound.turnCountVow < 1) {
+      $('.vow').attr('disabled', false);
+    }
+  })
 });
