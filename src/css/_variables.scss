@@ -1,0 +1,37 @@
+$white: #D3D3D3;
+$yellow: #ffd700;
+$deathStarGlow: #ffffff77;
+
+
+@-webkit-keyframes roll-in {
+  0% {
+            transform: translateX(-1000px) rotate(-720deg);
+            filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+            transform: translateX(0) rotate(0deg);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes swirl-in-fwd {
+  0% {
+            transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+            transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes swirl-in-fwd {
+  0% {
+            transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+            transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}

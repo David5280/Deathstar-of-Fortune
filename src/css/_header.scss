@@ -1,0 +1,9 @@
+header {
+  font-size: 30px;
+  color: $yellow;
+  text-align: center;
+  text-shadow: 2px 2px 4px;
+    & h1 {
+      margin: 25px 0px;
+    }
+}
