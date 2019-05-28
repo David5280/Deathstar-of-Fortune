@@ -1,5 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
+import spies from 'chai-spies'
+chai.use(spies);
 import Puzzle from '../src/puzzle.js'
 import Turn from '../src/turn.js'
 import testData from '../data/test_data_set.js'
@@ -7,6 +9,7 @@ import Round from '../src/round.js';
 import Player from '../src/player.js';
 import Wheel from '../src/wheel.js'
 import Game from '../src/game.js'
+import domUpdates from '../src/domUpdates.js'
 
 
 describe('Game', function() {
@@ -19,7 +22,14 @@ describe('Game', function() {
     player2 = new Player('Her', 2)
     player3 = new Player('Mantis', 3)
     game = new Game(player1, player2, player3)
+    chai.spy.on(domUpdates, 'displayPuzzle', () => true);
+    chai.spy.on(domUpdates, 'displayCategoryHint', () => true);
+    chai.spy.on(domUpdates, 'appendLetters', () => true);
+    chai.spy.on(domUpdates, 'removeDom', () => true);
   });
+  afterEach(function() {
+    chai.spy.restore(domUpdates);
+  })
 
   it('be an instance of round', function() {
     expect(game).to.be.an.instanceOf(Game)

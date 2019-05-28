@@ -1,4 +1,5 @@
 import Game from "./game";
+import $ from 'jquery';
 
 export default {
   removeSpinValue() {
@@ -22,7 +23,7 @@ export default {
     $('#player-3-bank').text(player3);
   },
   roundOver() {
-    // $('.main').hide()
+    
   },
   displayPuzzle(gameBoardPuzzle) {
     gameBoardPuzzle.map(letter => {
@@ -31,8 +32,6 @@ export default {
         $('.' + letter).hide()
       } else {
         $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
-        console.log('lettertest')
-        // $('.' + letter).css('background-color', 'black')
       }
     }) 
   },
@@ -72,6 +71,16 @@ export default {
   <button class='consonant-x con'>Y</button>
   <button class='consonant-y con'>X</button>
   <button class='consonant-z con'>Z</button>
+  `)
+  },
+  removeLosersBonus(bonusPlayer) {
+    $('.main-score-cards').text('');
+    $('.main-score-cards').append(`
+    <article class='player-scorecard player1 1'>
+    <h2 id='js-player1-name'>${bonusPlayer.name}</h2>
+    <h3>Score:<span id='${bonusPlayer}-score'> 0 </span></h3>
+    <h3>Bank:<span id='${bonusPlayer}-bank'>${bonusPlayer.bank}</span></h3>
+  </article>
   `)
   }
 } 

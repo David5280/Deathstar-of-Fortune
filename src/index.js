@@ -36,15 +36,14 @@ function createGame(Player1, Player2, Player3) {
   return game
 }
 
-
-
-
 let game = createGame()
 game.makeSelectedPuzzle(testData)
+game.makeBonusPuzz(testData);
 game.createWheel(testData.wheel)
 game.start(testData.wheel)
 
-console.log(game.round.puzzle)
+console.log(game.selectedPuzzles)
+
 
 const currentCategory = game.selectedPuzzles[game.roundCounter].category;
 const currentDescription = game.selectedPuzzles[game.roundCounter].description;
@@ -112,7 +111,7 @@ $(document).ready(function() {
     let spinValue =  game.round.wheel.spinValue;
     $('.spin').attr('disabled', true);
     $('.guess-word').attr('disabled', true);
-    $('.death-star-container').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
+    $('.puzzle').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
     if (spinValue === 'BANKRUPT' || spinValue === 'LOSE A TURN') {
       $(".spin-value").show().delay(2000).fadeOut();
       $('.con').attr('disabled', true);

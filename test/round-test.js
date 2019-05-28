@@ -44,7 +44,7 @@ describe('Round', function() {
   afterEach(function() {
     chai.spy.restore(domUpdates);
   })
-  it('be an instance of round', function() {
+  it('should be an instance of round', function() {
     expect(round).to.be.an.instanceOf(Round)
   });
   it('should hold a wheel with six values', function () {
@@ -115,7 +115,6 @@ describe('Round', function() {
     Player3.score = 50;
     round.wheel.selectCurrentValues();
     let result = round.guessLetter('A');
-    // console.log('b', result);
     if (result === 'BANKRUPT') {
       expect(Player1.score).to.equal(0);
     } else if (result === 'LOSE A TURN') {
@@ -135,7 +134,6 @@ describe('Round', function() {
     Player3.score = 50;
     round.wheel.selectCurrentValues();
     let result = round.guessLetter('Z');
-    // console.log('b', result);
     if (result === 'BANKRUPT') {
       expect(Player1.score).to.equal(0);
     } else if (result === 'LOSE A TURN') {
@@ -158,7 +156,5 @@ describe('Round', function() {
     expect(round.returnCurrentPlayer()).to.eql(Player2)
     expect(round.buyVowel('A')).to.equal(2)
     expect(Player2.score).to.equal(150)
-
   })
-
 });
