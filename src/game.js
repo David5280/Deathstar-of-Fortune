@@ -35,6 +35,7 @@ class Game {
   roundOver() {
     domUpdates.removeDom()
     if (this.roundCounter === 4) {
+      $('.header-round-indicator').text('****BONUS ROUND****')
       domUpdates.removeDom()
       this.bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
       // let topPlayer = this.bonusRound.findTopPlayer()
@@ -48,6 +49,7 @@ class Game {
       // this.roundCounter++;
     } else {
       this.roundCounter++;
+      $('.header-round-indicator').text(`Round ${this.roundCounter}`)
       this.start();
     }
   }

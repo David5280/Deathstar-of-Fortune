@@ -40,6 +40,7 @@ main {
 
 .middle-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
   flex: 6;
   & .category-hint {
@@ -59,7 +60,9 @@ main {
     }
   }
   & .puzzle {
-    align-self: center;
+    // align-self: center;
+    justify-content: center;
+    align-items: center;
     flex: 5;
     height: 300px;
     width: 80%;

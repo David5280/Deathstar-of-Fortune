@@ -99,8 +99,9 @@ $(document).ready(function() {
     $('.main-letters').delay(3000).fadeIn();
     $('#deathstar').delay(3000).fadeIn();
     $('.turn-controls').delay(3000).fadeIn();
-  });
+    $('.header-round-indicator').append(`Round ${game.roundCounter}`)
 
+  });
 
   $('.spin').click(function() {
     game.round.spinWheel()
