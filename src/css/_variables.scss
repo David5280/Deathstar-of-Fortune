@@ -15,16 +15,6 @@ $deathStarGlow: #ffffff77;
     opacity: 1;
   }
 }
-@-webkit-keyframes swirl-in-fwd {
-  0% {
-            transform: rotate(-540deg) scale(0);
-    opacity: 0;
-  }
-  100% {
-            transform: rotate(0) scale(1);
-    opacity: 1;
-  }
-}
 @keyframes swirl-in-fwd {
   0% {
             transform: rotate(-540deg) scale(0);
@@ -34,4 +24,15 @@ $deathStarGlow: #ffffff77;
             transform: rotate(0) scale(1);
     opacity: 1;
   }
+}
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+}
+  50% {
+    transform: scale(1.04);
+}
+  100% {
+    transform: scale(1);
+}
 }

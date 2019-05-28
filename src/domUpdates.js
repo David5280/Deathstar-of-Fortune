@@ -82,5 +82,11 @@ export default {
     <h3>Bank:<span id='${bonusPlayer}-bank'>${bonusPlayer.bank}</span></h3>
   </article>
   `)
+  },
+  postGameBonusPrompt1(winner) {
+    $('.postgame-prompt-container').append(`
+    <h3 class='preBonusText'>Congratulations ${winner}.  Time for a bonus round.  Spin the wheel to select a potential prize.</h3>
+    <button class='postGame-spinBtn'>SPIN</button>
+    `)
   }
 } 

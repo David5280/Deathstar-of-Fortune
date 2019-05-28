@@ -25,17 +25,17 @@ let wheel;
 let turn;
 let round;
 
+function createGame(Player1, Player2, Player3) {
+  let players = createPlayers(Player1, Player2, Player3)
+  let game = new Game(players)
+  return game
+}
+
 function createPlayers(Player1, Player2, Player3) {
   let player1 = new Player(Player1, 1)
   let player2 = new Player(Player2, 2)
   let player3 = new Player(Player3, 3)
   return [player1, player2, player3]
-}
-
-function createGame(Player1, Player2, Player3) {
-  let players = createPlayers(Player1, Player2, Player3)
-  let game = new Game(players)
-  return game
 }
 
 let game = createGame()
@@ -77,7 +77,7 @@ $(document).ready(function() {
     event.preventDefault();
     $('.pre-game-form').fadeOut();
     $('.pregame-prompt-container').append(`
-      <section class='pre-game-form prompt'>
+      < ection class='pre-game-form prompt'>
         <h3 class='pregame-prompt'>Welcome!  Use the buttons below to take your turn, and keep track of points in the boxes to the left!</h3>
         </section>
     `).delay(3000).fadeOut();
@@ -151,8 +151,10 @@ $(document).ready(function() {
   $('.guess-word-submit').click(function(event) {
     event.preventDefault()
     let wordValue = $('.guess-word-input').val()
-    game.round.guessAnswer(wordValue)
-    game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
+    game.round.guessAnswer(wordValue);
+    game.turn.guessAnswer(wordValue) ?  
+      $('.puzzle-letters').children().show() : 
+      $('.guess-word-input').val("");
     $('.guess-word-input').hide().fadeOut();
     $('.guess-word-submit').hide().fadeOut();
     $('.turn-buttons').show().fadeIn();

@@ -36,13 +36,13 @@ class Game {
     domUpdates.removeDom()
     if (this.roundCounter === 4) {
       let bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
-      bonusRound.findTopPlayer()
+      let topPlayer = bonusRound.findTopPlayer()
       console.log('over4')
-      domUpdates.displayCategoryHint(bonusRound.puzzle.category, bonusRound.puzzle.description)
-      domUpdates.appendLetters()
-      bonusRound.findTopPlayer();
-      domUpdates.removeLosersBonus(bonusRound.topPlayer);
-      domUpdates.displayPuzzle(bonusRound.returnCurrentAnswer());
+      // domUpdates.displayCategoryHint(bonusRound.puzzle.category, bonusRound.puzzle.description)
+      // domUpdates.appendLetters()
+      // domUpdates.removeLosersBonus(bonusRound.topPlayer);
+      // domUpdates.displayPuzzle(bonusRound.returnCurrentAnswer());
+      domUpdates.postGameBonusPrompt1(topPlayer)
     } else {
       this.roundCounter++;
       this.start();

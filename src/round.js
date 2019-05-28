@@ -69,7 +69,7 @@ class Round {
       let currentPlayer = this.returnCurrentPlayer();
       currentPlayer.bank += currentPlayer.score;
       this.players.forEach(player => {
-      player.score = 0;
+        player.score = 0;
       })
       domUpdates.changeBank(this.players[0].bank, this.players[1].bank, this.players[2].bank)
       domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
