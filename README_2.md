@@ -30,7 +30,7 @@ makes it to the bonus round for a chance at a special prize from a galaxy far, f
  - Webpack
 
 This project was an opportunity for the developers to build out a program from scratch based on user stories, enhance 
-their skills manipulating class properties and methods across files, testing, and compiling the files with webpack. 
+their skills manipulating class properties and methods across files, testing, and compiling files with webpack. 
 
 ## Screenshots
 
