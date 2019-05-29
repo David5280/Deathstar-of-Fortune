@@ -77,8 +77,6 @@ class Round {
     }
   }
 
-
-
   buyVowel(vowel) {
     this.returnCurrentPlayer().score -= 100;
     domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)

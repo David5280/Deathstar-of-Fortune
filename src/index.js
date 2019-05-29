@@ -176,6 +176,7 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
+  
   $('.turn-buttons').click(function(event) {
     if (event.target.className.includes('spin-bonus')) {
       game.bonusRound.createBonusWheel()
@@ -185,6 +186,7 @@ $(document).ready(function() {
       $('.vow').attr('disabled', false);
     }
   })
+
   $('.main-letters').click(function(event) {
     if (game.roundCounter > 4 && event.target.className.includes('con')) {
       game.bonusRound.turnCountConstInc()
