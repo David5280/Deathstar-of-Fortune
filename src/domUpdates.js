@@ -38,14 +38,17 @@ export default {
       }
     }) 
   },
+
   displayCategoryHint(currentCategory, currentDescription) {
     $('.category-hint').append(`<h4>${currentCategory}:</h4><p> ${currentDescription} <p>`);
   },
+
   removeDom() {
     $('.puzzle-container').text('')
     $('.category-hint').text('')
     $('.main-letters').text('')
   },
+
   appendLetters() {
     $('.main-letters').append(`
   <button class='vowel-a vow' disabled>A</button>
@@ -78,6 +81,7 @@ export default {
     $('.con').attr('disabled', true);
     $('.vow').attr('disabled', true);
   },
+
   removeLosersBonus(bonusPlayer) {
     $('.main-score-cards').text('');
     $('.main-score-cards').append(`
@@ -88,29 +92,34 @@ export default {
   </article>
   `)
   },
+
   postGameBonusPrompt1(winner) {
     $('.postgame-prompt-container').append(`
     <h3 class='preBonusText'>Congratulations ${winner}.  Time for a bonus round.  Spin the wheel to select a potential prize.</h3>
     <button class='postGame-spinBtn'>SPIN</button>
     `)
   },
+
   displayBonusLetters(letters) {
     letters.map(letter => {
-      console.log(letter)
       $('.' + letter).show()
     })
   },
+
   createBonusControls() {
     $('.spin').remove()
     $('.buy-vowel').remove()
     $('.turn-buttons').append(`<button class='spin-bonus' type='button'>SPIN</button>`)
   },
+
   disableConst() {
     $('.con').attr('disabled', true)
   },
+
   disableVow() {
     $('.vow').attr('disabled', true);
   },
+  
   displayRoundNumber(roundCounter) {
     if (roundCounter < 5) {
       $('.header-round-indicator').text(`Round ${roundCounter}`)

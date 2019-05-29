@@ -42,7 +42,6 @@ class Game {
       this.bonusRound.findTopPlayer();
       domUpdates.displayRoundNumber(this.roundCounter);
       let topPlayer = this.bonusRound.topPlayer
-      console.log(topPlayer);
       domUpdates.removeLosersBonus(topPlayer);
       domUpdates.displayBonusLetters(['R', 'S', 'L', 'N', 'T', 'E'])
       domUpdates.createBonusControls();

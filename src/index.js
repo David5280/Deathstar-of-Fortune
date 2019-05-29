@@ -33,7 +33,6 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
   })
   .then(function(parsedData) {
     data = parsedData.data
-    console.log(data)
   })
   .catch(err => console.error(err));
 
@@ -52,17 +51,13 @@ function createPlayers(Player1, Player2, Player3) {
   return [player1, player2, player3]
 }
 
-function startGame(data) {
-  game = createGame()
+function startGame(data, Player1, Player2, Player3) {
+  game = createGame(Player1, Player2, Player3)
   game.makeSelectedPuzzle(data)
   game.makeBonusPuzz(data);
   game.createWheel(data.wheel)
   game.start(data.wheel)
-  console.log(game.selectedPuzzles)
 }
-
-// const currentCategory = game.selectedPuzzles[game.roundCounter].category;
-// const currentDescription = game.selectedPuzzles[game.roundCounter].description;
 
 $(document).ready(function() {
 
@@ -86,7 +81,7 @@ $(document).ready(function() {
 
   $('#start-game-btn').click(function(event) {
     event.preventDefault();
-    startGame(data);
+    startGame(data, $('.p1').val(), $('.p1').val(), $('.p1').val());
     $('.pre-game-form').fadeOut();
     $('.pregame-prompt-container').append(`
       <section class='pre-game-form prompt'>
@@ -100,7 +95,6 @@ $(document).ready(function() {
     $('#deathstar').delay(3000).fadeIn();
     $('.turn-controls').delay(3000).fadeIn();
     $('.header-round-indicator').append(`Round ${game.roundCounter}`)
-
   });
 
   $('.spin').click(function() {
@@ -119,9 +113,7 @@ $(document).ready(function() {
     $('.buy-vowel').attr('disabled', true);
   });
   
-
   $('.main-letters').click(function(event) { 
-    console.log(event.target.className)
     if (event.target.className.includes('con')) {
       $('.spin').attr('disabled', false);
       $('.guess-word').attr('disabled', false);
@@ -132,6 +124,13 @@ $(document).ready(function() {
       }
       $('.con').attr('disabled', true);
       $(event.target).removeClass('con');
+    }
+  })
+
+  $('.guess-word-submit').click(function() {
+    if (game.roundCounter > 4) {
+      $('.puzzle').text('')
+      $('.puzzle').append(`<p class='game-over'>GAME OVER.  YOU WON!</p>`)
     }
   })
 
@@ -177,11 +176,9 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
+  
   $('.turn-buttons').click(function(event) {
-    console.log(event.target)
-    console.log(event.target.className)
     if (event.target.className.includes('spin-bonus')) {
-      console.log('hi')
       game.bonusRound.createBonusWheel()
       let spinValue = game.bonusRound.bonusValue
       $('.puzzle').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
@@ -189,6 +186,7 @@ $(document).ready(function() {
       $('.vow').attr('disabled', false);
     }
   })
+
   $('.main-letters').click(function(event) {
     if (game.roundCounter > 4 && event.target.className.includes('con')) {
       game.bonusRound.turnCountConstInc()
