@@ -7,7 +7,7 @@ export default {
   },
   addPlayerBorder(id) {
     $('.player-scorecard').css('border', "none");
-    $('.'+id).css('border', "white solid 2px");
+    $('.' + id).css('border', "white solid 2px");
   },
   changeScore(player1, player2, player3) {
     $('#player-1-score').text(player1);
@@ -26,14 +26,15 @@ export default {
     
   },
   displayPuzzle(gameBoardPuzzle) {
+    let regex = /[a-zA-Z]/
     gameBoardPuzzle.map(letter => {
-      if (letter === '&') {
-        $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
-      } else if (letter !== ' ') {
+      if (letter === ' ') {
+        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+      } else if (letter.match(regex)) {
         $('.puzzle-container').append(`<li class ="puzzle-letters "><p class = ${letter}>${letter}</p></li>`)
         $('.' + letter).hide()
       } else {
-        $('.puzzle-container').append(`<li class ="puzzle-letters-black"><p>'  '</p></li>`)
+        $('.puzzle-container').append(`<li class ="puzzle-letters "><p>${letter}</p></li>`)
       }
     }) 
   },
@@ -46,7 +47,7 @@ export default {
     $('.main-letters').text('')
   },
   appendLetters() {
-  $('.main-letters').append(`
+    $('.main-letters').append(`
   <button class='vowel-a vow' disabled>A</button>
   <button class='consonant-b con'>B</button>
   <button class='consonant-c con'>C</button>
@@ -74,6 +75,8 @@ export default {
   <button class='consonant-y con'>X</button>
   <button class='consonant-z con'>Z</button>
   `)
+    $('.con').attr('disabled', true);
+    $('.vow').attr('disabled', true);
   },
   removeLosersBonus(bonusPlayer) {
     $('.main-score-cards').text('');
@@ -84,10 +87,35 @@ export default {
     <h3>Bank:<span id='${bonusPlayer}-bank'>${bonusPlayer.bank}</span></h3>
   </article>
   `)
-  }
+  },
+  postGameBonusPrompt1(winner) {
+    $('.postgame-prompt-container').append(`
+    <h3 class='preBonusText'>Congratulations ${winner}.  Time for a bonus round.  Spin the wheel to select a potential prize.</h3>
+    <button class='postGame-spinBtn'>SPIN</button>
+    `)
+  },
   displayBonusLetters(letters) {
-    letters.forEach(letter => {
+    letters.map(letter => {
+      console.log(letter)
       $('.' + letter).show()
     })
+  },
+  createBonusControls() {
+    $('.spin').remove()
+    $('.buy-vowel').remove()
+    $('.turn-buttons').append(`<button class='spin-bonus' type='button'>SPIN</button>`)
+  },
+  disableConst() {
+    $('.con').attr('disabled', true)
+  },
+  disableVow() {
+    $('.vow').attr('disabled', true);
+  },
+  displayRoundNumber(roundCounter) {
+    if (roundCounter < 5) {
+      $('.header-round-indicator').text(`Round ${roundCounter}`)
+    } else {
+      $('.header-round-indicator').text('****BONUS ROUND****')
+    }
   }
 } 

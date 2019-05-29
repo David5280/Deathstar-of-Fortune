@@ -33,11 +33,13 @@ describe('Bonus Round', function () {
     chai.spy.on(domUpdates, 'enableBuyVowel', () => true);
     chai.spy.on(domUpdates, 'changeBank', () => true);
     chai.spy.on(domUpdates, 'roundOver', () => true);
-    chai.spy.on(domUpdates, 'displayPuzzle', () => true);
-
+    chai.spy.on(domUpdates, 'displayPuzzle', () => true)
+    chai.spy.on(domUpdates, 'displayCategoryHint', () => true);
+    chai.spy.on(domUpdates, 'appendLetters', () => true);
+    chai.spy.on(domUpdates, 'removeDom', () => true);
   });
   afterEach(function () {
-    chai.spy.restore(domUpdates);
+    // chai.spy.restore(domUpdates);
   })
   it('should be an instance of bonus Round', function () {
     expect(bonusRound).to.be.an.instanceOf(BonusRound);

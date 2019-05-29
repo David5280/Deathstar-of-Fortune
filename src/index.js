@@ -39,17 +39,17 @@ fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data'
 
 
 
+function createGame(Player1, Player2, Player3) {
+  let players = createPlayers(Player1, Player2, Player3)
+  let game = new Game(players)
+  return game
+}
+
 function createPlayers(Player1, Player2, Player3) {
   let player1 = new Player(Player1, 1)
   let player2 = new Player(Player2, 2)
   let player3 = new Player(Player3, 3)
   return [player1, player2, player3]
-}
-
-function createGame(Player1, Player2, Player3) {
-  let players = createPlayers(Player1, Player2, Player3)
-  let game = new Game(players)
-  return game
 }
 
 function startGame(data) {
@@ -61,9 +61,6 @@ function startGame(data) {
   console.log(game.selectedPuzzles)
 }
 
-
-
-
 // const currentCategory = game.selectedPuzzles[game.roundCounter].category;
 // const currentDescription = game.selectedPuzzles[game.roundCounter].description;
 
@@ -73,9 +70,6 @@ $(document).ready(function() {
   $('.main-letters').hide();
   $('.turn-controls').hide();
   $('.1').css('border', "white solid 2px")
-
-  $('.con').attr('disabled', true),
-  $('.vow').attr('disabled', true)
 
   $('.guess-word-input').hide()
   $('.guess-word-submit').hide()
@@ -105,8 +99,9 @@ $(document).ready(function() {
     $('.main-letters').delay(3000).fadeIn();
     $('#deathstar').delay(3000).fadeIn();
     $('.turn-controls').delay(3000).fadeIn();
-  });
+    $('.header-round-indicator').append(`Round ${game.roundCounter}`)
 
+  });
 
   $('.spin').click(function() {
     game.round.spinWheel()
@@ -152,8 +147,10 @@ $(document).ready(function() {
   $('.guess-word-submit').click(function(event) {
     event.preventDefault()
     let wordValue = $('.guess-word-input').val()
-    game.round.guessAnswer(wordValue)
-    game.turn.guessAnswer(wordValue) ?  $('.puzzle-letters').children().show() : $('.guess-word-input').val("")
+    game.round.guessAnswer(wordValue);
+    game.turn.guessAnswer(wordValue) ?  
+      $('.puzzle-letters').children().show() : 
+      $('.guess-word-input').val("");
     $('.guess-word-input').hide().fadeOut();
     $('.guess-word-submit').hide().fadeOut();
     $('.turn-buttons').show().fadeIn();
@@ -180,5 +177,28 @@ $(document).ready(function() {
       $(event.target).removeClass('vow');
     }
   })
-
+  $('.turn-buttons').click(function(event) {
+    console.log(event.target)
+    console.log(event.target.className)
+    if (event.target.className.includes('spin-bonus')) {
+      console.log('hi')
+      game.bonusRound.createBonusWheel()
+      let spinValue = game.bonusRound.bonusValue
+      $('.puzzle').append(`<h3 class='spin-value roll-in'>${spinValue}</h3>`);
+      $('.con').attr('disabled', false);
+      $('.vow').attr('disabled', false);
+    }
+  })
+  $('.main-letters').click(function(event) {
+    if (game.roundCounter > 4 && event.target.className.includes('con')) {
+      game.bonusRound.turnCountConstInc()
+    } else if (game.roundCounter > 4 && event.target.className.includes('vow')) {
+      game.bonusRound.turnCountVowInc()
+    }
+    if (game.roundCounter > 4 && game.bonusRound.turnCountConst < 3) {
+      $('.con').attr('disabled', false);
+    } else if (game.roundCounter > 4 && game.bonusRound.turnCountVow < 1) {
+      $('.vow').attr('disabled', false);
+    }
+  })
 });

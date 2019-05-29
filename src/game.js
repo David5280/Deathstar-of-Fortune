@@ -14,6 +14,7 @@ class Game {
     this.wheel = {}
     this.turn = {}
     this.round =  {}
+    this.bonusRound = {}
   }
   createWheel(wheelValues) {
     this.wheel = new Wheel(wheelValues)
@@ -33,22 +34,19 @@ class Game {
   }
   roundOver() {
     domUpdates.removeDom()
-    if (this.roundCounter === 4) {
-      domUpdates.removeDom()
-      let bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
-      bonusRound.findTopPlayer()
-      console.log('over4')
-      domUpdates.displayCategoryHint(bonusRound.puzzle.category, bonusRound.puzzle.description)
-      domUpdates.appendLetters()
-      bonusRound.findTopPlayer();
-      domUpdates.removeLosersBonus(bonusRound.topPlayer);
-      let gameBoardPuzzle = bonusRound.returnCurrentAnswer()
-      domUpdates.displayPuzzle(gameBoardPuzzle);
-      domUpdates.displayBonusLetters(['r', 's', 'l', 'n', 't', 'e'])
-    } else {
-      this.roundCounter++;
-      this.start();
-    }
+    this.roundCounter++;
+    domUpdates.displayRoundNumber(this.roundCounter);
+    this.start();
+    if (this.roundCounter === 5) {
+      this.bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
+      this.bonusRound.findTopPlayer();
+      domUpdates.displayRoundNumber(this.roundCounter);
+      let topPlayer = this.bonusRound.topPlayer
+      console.log(topPlayer);
+      domUpdates.removeLosersBonus(topPlayer);
+      domUpdates.displayBonusLetters(['R', 'S', 'L', 'N', 'T', 'E'])
+      domUpdates.createBonusControls();
+    } 
   }
   makeSelectedPuzzle(data) {
     this.selectedPuzzles = []
