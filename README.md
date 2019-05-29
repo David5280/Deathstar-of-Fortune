@@ -36,7 +36,7 @@ their skills manipulating class properties and methods across files, testing, an
 
 Splash Page
 
-<img width="1037" alt="DSofFortune Splash" src="https://giphy.com/gifs/YSe2t1UtRXlIQElBNm/html5>
+<img width="1037" alt="DSofFortune Splash" src="https://media.giphy.com/media/YSe2t1UtRXlIQElBNm/giphy.gif>
 
 
 Gameplay
