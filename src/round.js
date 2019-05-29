@@ -54,7 +54,6 @@ class Round {
       this.incremenTurnCount();
       return 0;
     } else {
-      console.log(correctLetterCount)
       this.correctGuessCount += correctLetterCount
       this.returnCurrentPlayer().score += spinValue * correctLetterCount;
       domUpdates.changeScore(this.players[0].score, this.players[1].score, this.players[2].score)
