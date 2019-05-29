@@ -135,6 +135,14 @@ $(document).ready(function() {
     }
   })
 
+  $('.guess-word-submit').click(function() {
+    if (game.roundCounter > 4) {
+      console.log('bonus-round-submit')
+      $('.puzzle').text('')
+      $('.puzzle').append(`<p class='game-over'>GAME OVER.  YOU WON!</p>`)
+    }
+  })
+
   $('.guess-word').click(function(event) {
     event.preventDefault()
     $('.guess-word-input').show()
