@@ -35,15 +35,17 @@ class Game {
   roundOver() {
     domUpdates.removeDom()
     this.roundCounter++;
+    domUpdates.displayRoundNumber(this.roundCounter);
     this.start();
     if (this.roundCounter === 5) {
       this.bonusRound = new BonusRound(this.wheel, this.selectedPuzzles[4], this.players, this.turn, this.turnCount, this);
-      this.bonusRound.findTopPlayer()
+      this.bonusRound.findTopPlayer();
+      domUpdates.displayRoundNumber(this.roundCounter);
       let topPlayer = this.bonusRound.topPlayer
-      console.log(topPlayer)
+      console.log(topPlayer);
       domUpdates.removeLosersBonus(topPlayer);
       domUpdates.displayBonusLetters(['R', 'S', 'L', 'N', 'T', 'E'])
-      domUpdates.createBonusControls()
+      domUpdates.createBonusControls();
     } 
   }
   makeSelectedPuzzle(data) {
