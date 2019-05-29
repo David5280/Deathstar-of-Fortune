@@ -41,7 +41,7 @@ Splash Page
 
 Gameplay
 
-<img width="1440" alt="DSofFortune Game Play" src="https://media.giphy.com/media/UrJgGkZjROuSbtWh1U/giphy.gif>
+<img width="1440" alt="DSofFortune Game Play" src="https://media.giphy.com/media/UrJgGkZjROuSbtWh1U/giphy.gif">
 
 
 Bonus Round
